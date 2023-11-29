@@ -27,15 +27,17 @@ public class UserService extends BaseService {
 	public void delete(User user) {
 		this.userRepository.delete(user);
 	}
+	
+	public List<User> findAll() {
+		return this.userRepository.findAll();
+	}
 
 	@Transactional
-	public boolean transfer(User payer, User payee, BigDecimal ammount) {
+	public void transfer(User payer, User payee, BigDecimal ammount) {
 		Transaction transaction = new Transaction(payer, payee, ammount);
-		payer.getBalance().subtract(ammount);
-		payee.getBalance().add(ammount);
+		payer.setBalance(payer.getBalance().subtract(ammount));
+		payee.setBalance(payee.getBalance().add(ammount));
 		this.transactionRepository.save(transaction);
 		this.userRepository.saveAll(List.of(payee, payer));
-
-		return false;
 	}
 }

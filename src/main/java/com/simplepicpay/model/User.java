@@ -14,11 +14,13 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -89,5 +91,11 @@ public class User extends BaseEntity implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return false;
+	}
+
+	@Override
+	public String toString() {
+		return "User [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", balance=" + balance
+				+ ", document=" + document + ", userType=" + userType + ", role=" + role + "]";
 	}
 }

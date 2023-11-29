@@ -41,6 +41,10 @@ public class UserService extends BaseService {
 		return this.userRepository.save(this.userMapper.toModel(userRequestDto));
 	}
 
+	public User findByEmail(String email) {
+		return this.userRepository.findByEmail(email).orElse(null);
+	}
+	
 	public void delete(User user) {
 		this.userRepository.delete(user);
 	}

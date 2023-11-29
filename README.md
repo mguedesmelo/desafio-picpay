@@ -1,3 +1,3 @@
 # Simple Picpay
 
-Teste novo
+Teste

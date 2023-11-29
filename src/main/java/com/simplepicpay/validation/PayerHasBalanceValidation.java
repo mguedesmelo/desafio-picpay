@@ -9,11 +9,12 @@ public class PayerHasBalanceValidation extends BaseValidation {
 	private BigDecimal ammount;
 
 	public PayerHasBalanceValidation(User payer, BigDecimal ammount) {
+		super("Insufficient funds");
 		this.payer = payer;
 	}
 
 	@Override
-	boolean valid() {
+	public boolean valid() {
 		return this.payer.getBalance().compareTo(this.ammount) >= 1;
 	}
 }

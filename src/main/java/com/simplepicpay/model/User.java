@@ -56,13 +56,13 @@ public class User extends BaseEntity implements UserDetails {
     
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
-    private UserRole role;
+    private UserRole userRole;
 
     @Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		Collection<SimpleGrantedAuthority> toReturn = List.of(
 				new SimpleGrantedAuthority(UserRole.USER.toString()));
-		if (this.role.equals(UserRole.ADMIN)) {
+		if (this.userRole.equals(UserRole.ADMIN)) {
 			toReturn.add(new SimpleGrantedAuthority(UserRole.ADMIN.toString()));
 		}
 		return toReturn;
@@ -96,6 +96,6 @@ public class User extends BaseEntity implements UserDetails {
 	@Override
 	public String toString() {
 		return "User [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", balance=" + balance
-				+ ", document=" + document + ", userType=" + userType + ", role=" + role + "]";
+				+ ", document=" + document + ", userType=" + userType + ", role=" + userRole + "]";
 	}
 }

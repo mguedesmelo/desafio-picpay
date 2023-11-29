@@ -6,10 +6,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.simplepicpay.dto.UserRequestDto;
+import com.simplepicpay.exception.BusinessException;
+import com.simplepicpay.mapper.UserMapper;
 import com.simplepicpay.model.Transaction;
 import com.simplepicpay.model.User;
 import com.simplepicpay.repository.TransactionRepository;
 import com.simplepicpay.repository.UserRepository;
+import com.simplepicpay.validation.AuthorizeTransferValidation;
+import com.simplepicpay.validation.OnlyUserCanTransferValidation;
+import com.simplepicpay.validation.PayerHasBalanceValidation;
 
 import jakarta.transaction.Transactional;
 
@@ -19,9 +25,13 @@ public class UserService extends BaseService {
 	private UserRepository userRepository;
 	@Autowired
 	private TransactionRepository transactionRepository;
+	@Autowired
+	private NotificationService notificationService;
+	@Autowired
+	private UserMapper userMapper;
 
-	public User save(User user) {
-		return this.userRepository.save(user);
+	public User save(UserRequestDto userRequestDto) {
+		return this.userRepository.save(this.userMapper.toModel(userRequestDto));
 	}
 
 	public void delete(User user) {
@@ -33,11 +43,27 @@ public class UserService extends BaseService {
 	}
 
 	@Transactional
-	public void transfer(User payer, User payee, BigDecimal ammount) {
+	public Transaction transfer(Long payerId, Long payeeId, BigDecimal ammount) throws BusinessException {
+		User payer = this.userRepository.findById(payerId)
+				.orElseThrow(() -> new BusinessException("Payer not found"));
+		User payee = this.userRepository.findById(payeeId)
+				.orElseThrow(() -> new BusinessException("Payee not found"));
+
+		this.clearValidations();
+		this.addValidation(new OnlyUserCanTransferValidation(payer));
+		this.addValidation(new PayerHasBalanceValidation(payer, ammount));
+		this.addValidation(new AuthorizeTransferValidation());
+		performValidations();
+
 		Transaction transaction = new Transaction(payer, payee, ammount);
 		payer.setBalance(payer.getBalance().subtract(ammount));
 		payee.setBalance(payee.getBalance().add(ammount));
-		this.transactionRepository.save(transaction);
 		this.userRepository.saveAll(List.of(payee, payer));
+		Transaction toReturn = this.transactionRepository.save(transaction);
+
+		this.notificationService.notifyUser(payer);
+		this.notificationService.notifyUser(payee);
+
+		return toReturn;
 	}
 }

@@ -191,40 +191,6 @@ Em resumo, a escolha de Java no backend oferece um ambiente técnico robusto e e
 # BACKLOG
 
 **Backend**
-- [x] /api/signin (GET) - Login de acesso
-- [x] /api/users (GET) - Listar todos os usuários
-- [x] /api/users (POST) - Cadastrar um novo usuário
-- [x] /api/users/{id} (GET) - Buscar um usuário pelo id
-- [x] /api/users/{id} (DELETE) - Remover um usuário pelo id
-- [x] /api/users/{id} (PUT) - Atualizar um usuário pelo id
-- [x] /api/users/upload/{id} (POST) - Enviar foto
-- [x] /api/users/image/{id} (GET) - Obter foto do usuário
-- [x] /api/me (GET) - Retornar as informações do usuário logado
-- [x] /api/cars (GET) - Listar todos os carros do usuário logado
-- [x] /api/cars (POST) - Cadastrar um novo carro para o usuário logado
-- [x] /api/cars/{id} (GET) - Buscar um carro do usuário logado pelo id
-- [x] /api/cars/{id} (DELETE) - Remover um carro do usuário logado pelo id
-- [x] /api/cars/{id} (PUT) - Atualizar um carro do usuário logado pelo id
-- [x] Testes unitários de autenticação
-- [x] Testes unitários do controlador de usuários
-- [ ] Testes unitários do controlador de carros
-
-**Frontend**
-- [ ] Tela principal com menu dinâmico
-- [ ] Login de acesso
-- [x] Listagem de usuários
-- [x] Tela de novo usuário
-- [x] Salvar novo usuário
-- [ ] Tela de alteração de usuário
-- [ ] Alterar usuário
-- [ ] Remover usuário
-- [ ] Enviar foto do usuário
-- [ ] Listagem de carros de um usuário
-- [ ] Tela de novo carro
-- [ ] Salvar novo carro
-- [ ] Tela de alteração de carro
-- [ ] Alterar carro
-- [ ] Remover carro
-- [ ] Detalhar carro
-- [ ] Enviar foto do carro
-- [ ] Requisito extra (bonus stage)
+- [x] /api/login (GET) - Login de acesso
+- [ ] Testes unitários de autenticação
+- [ ] Testes unitários do controlador de usuários

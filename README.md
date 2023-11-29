@@ -1,1 +1,1 @@
-# simplepicpay
+# Simple Picpay

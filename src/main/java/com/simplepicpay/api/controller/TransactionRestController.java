@@ -14,12 +14,12 @@ import com.simplepicpay.model.Transaction;
 import com.simplepicpay.service.UserService;
 
 @RestController
-@RequestMapping("/api/transaction")
+@RequestMapping("/api/transfer")
 public class TransactionRestController {
 	@Autowired
 	private UserService userService;
 
-	@PostMapping("/transfer")
+	@PostMapping
 	public ResponseEntity<Transaction> transfer(
 			@RequestBody TransferRequestDto transferDto) throws BusinessException {
 		Transaction transaction = this.userService.transfer(

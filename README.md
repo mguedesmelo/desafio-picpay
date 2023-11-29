@@ -98,26 +98,20 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 | ------ | ------ | ------ | ------ |
 | /api/me | Retorna as informações do usuário logado | GET | 1,2 |
 | /api/transfer | Listar todos os carros do usuário logado | GET | 1,2 |
-| /api/cars | Cadastrar um novo carro para o usuário logado | POST | 1,2,3,4,5 |
-| /api/cars/{id} | Buscar um carro do usuário logado pelo id | GET | 1,2 |
-| /api/cars/{id} | Remover um carro do usuário logado pelo id | DELETE | 1,2 |
-| /api/cars/{id} | Atualizar um carro do usuário logado pelo id | PUT | 1,2,3,4,5 |
 
 **Erros possíveis:**
 1. Token não enviado: retornar um erro com a mensagem “Unauthorized”;
 2. Token expirado: retornar um erro com a mensagem “Unauthorized - invalid session”;
-3. Placa já existente: retornar um erro com a mensagem “License plate already exists”;
-4. Campos inválidos: retornar um erro com a mensagem “Invalid fields”;
-5. Campos não preenchidos: retornar um erro com a mensagem “Missing fields”.
+3. Campos inválidos: retornar um erro com a mensagem “Invalid fields”;
+4. Campos não preenchidos: retornar um erro com a mensagem “Missing fields”.
 
 
-**Exemplo de JSON para criação do carro:**
+**Exemplo de JSON para realização de transferência:**
 ```
 {
-  "year": 2018,
-  "licensePlate": "PDV-0625",
-  "model": "Audi",
-  "color": "White"
+  "payer": "1",
+  "payee": "2",
+  "ammount": "150"
 }
 ```
 
@@ -128,7 +122,6 @@ http://localhost:8080/swagger-ui.html
 
 
 # ESTÓRIAS DE USUÁRIO
-Mini Sprint: Semana de 24 a 27 de Outubro de 2023
 
 Objetivo da Sprint: Desenvolver funcionalidades básicas do backend.
 

@@ -1,11 +1,20 @@
 package com.simplepicpay.repository;
 
-import org.springframework.security.core.userdetails.UserDetails;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.simplepicpay.model.User;
 
 public interface UserRepository extends BaseRepository<User> {
-	public User findByDocument(String document);
-	
-	public UserDetails findByEmail(String email);
+	@Query("SELECT u FROM User u WHERE u.id <> :id AND u.document = :document")
+	public Optional<User> findByDocument(@Param("id") Long id, @Param("document") String document);
+
+	public Optional<User> findByDocument(String document);
+
+	@Query("SELECT u FROM User u WHERE u.id <> :id AND u.email = :email")
+	public Optional<User> findByEmail(@Param("id") Long id, @Param("email") String email);
+
+	public Optional<User> findByEmail(String email);
 }

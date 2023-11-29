@@ -14,6 +14,8 @@ import com.simplepicpay.model.User;
 import com.simplepicpay.repository.TransactionRepository;
 import com.simplepicpay.repository.UserRepository;
 import com.simplepicpay.validation.AuthorizeTransferValidation;
+import com.simplepicpay.validation.DocumentUniqueValidation;
+import com.simplepicpay.validation.EmailUniqueValidation;
 import com.simplepicpay.validation.OnlyUserCanTransferValidation;
 import com.simplepicpay.validation.PayerHasBalanceValidation;
 
@@ -30,14 +32,19 @@ public class UserService extends BaseService {
 	@Autowired
 	private UserMapper userMapper;
 
-	public User save(UserRequestDto userRequestDto) {
+	public User save(UserRequestDto userRequestDto) throws BusinessException {
+		this.clearValidations();
+		this.addValidation(new DocumentUniqueValidation(userRequestDto));
+		this.addValidation(new EmailUniqueValidation(userRequestDto));
+		performValidations();
+
 		return this.userRepository.save(this.userMapper.toModel(userRequestDto));
 	}
 
 	public void delete(User user) {
 		this.userRepository.delete(user);
 	}
-	
+
 	public List<User> findAll() {
 		return this.userRepository.findAll();
 	}

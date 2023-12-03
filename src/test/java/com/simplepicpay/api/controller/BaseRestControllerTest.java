@@ -10,4 +10,13 @@ public class BaseRestControllerTest<T> {
 			throw new RuntimeException(e);
 		}
 	}
+	
+    protected Object fromJson(String json, Class<? extends Object> clazz) {
+        try {
+        	ObjectMapper mapper = new ObjectMapper();
+			return mapper.readValue(json, clazz);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+    }
 }

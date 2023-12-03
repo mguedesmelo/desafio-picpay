@@ -18,6 +18,7 @@ import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.simplepicpay.dto.LoginRequestDto;
+import com.simplepicpay.dto.LoginResponseDto;
 import com.simplepicpay.model.User;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -41,9 +42,10 @@ class AuthenticationRestControllerTest extends BaseRestControllerTest<User> {
 		
 		return result.getResponse().getContentAsString();
 	}
-	
-	private String getValidToken() throws Exception {
-		return this.getToken("fulano@picpay.com", "h3ll0");
+
+	private LoginResponseDto getValidToken() throws Exception {
+		String token = this.getToken("fulano@picpay.com", "h3ll0");
+		return (LoginResponseDto) fromJson(token, LoginResponseDto.class);
 	}
 
 	private MvcResult perform(String email, String password, ResultMatcher expectedStatus) throws Exception {
@@ -58,8 +60,8 @@ class AuthenticationRestControllerTest extends BaseRestControllerTest<User> {
 	
 	@Test
 	void testLogin() throws Exception {
-		String token = getValidToken();
-		assertNotNull(token);
+		LoginResponseDto loginResponseDto = getValidToken();
+		assertNotNull(loginResponseDto);
 	}
 
 	@Test
@@ -82,14 +84,15 @@ class AuthenticationRestControllerTest extends BaseRestControllerTest<User> {
 
 	@Test
 	void testMe() throws Exception {
-		//FIXME Transformar este json num LoginResponseDto
-		String token = getValidToken();
+		LoginResponseDto loginResponseDto = getValidToken();
 		MvcResult result = mvc.perform(MockMvcRequestBuilders
 	            .get("/api/me")
 	            .contentType(MediaType.APPLICATION_JSON)
-	            .header("Authorization", "Bearer " + token))
+	            .header("Authorization", "Bearer " + loginResponseDto.token()))
 	            .andExpect(status().isOk())
 	            .andReturn();
+		// FIXME Endpoint /api/me deve retornar um objeto DTO??
+//		User userJson = (User) fromJson(result.getResponse().getContentAsString(), User.class);
 		String userJson = result.getResponse().getContentAsString();
 		assertNotNull(userJson);
 	}

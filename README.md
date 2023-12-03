@@ -68,7 +68,14 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 
 | Rota | Descrição | Tipo | Erros possíveis | Status |
 | ------ | ------ | ------ | ------ | ------ |
-| /api/login | Espera um objeto com os campos login e password para efetua o login. Deve ser retornado o token de acesso da API (JWT) com as informações do usuário logado | POST | 1 | Finalizado |
+| /api/login | Espera um objeto com os campos login e password para efetua o login. Deve ser retornado o token de acesso da API (JWT) com as informações do usuário logado. Exemplo:
+```
+{
+  "email": "amazon@picpay.com",
+  "password": "h3ll0"
+}
+```
+ | POST | 1 | Finalizado |
 | /api/user | Espera um objeto com os campos necessários para a criação de um usuário. Deve ser retornado as informações do usuário criado | POST | 2,3,4,5 | Não iniciado |
 
 **Erros possíveis:**
@@ -116,12 +123,6 @@ Todas estas rotas esperam que seja enviado um token no cabeçalho da requisiçã
   "ammount": "150"
 }
 ```
-
-## Para mais detalhes e efetuar os testes, basta executar o Swagger do projeto pelo endereço:
-```
-http://localhost:8080/swagger-ui.html
-```
-
 
 # ESTÓRIAS DE USUÁRIO
 
@@ -193,6 +194,5 @@ Em resumo, a escolha de Java no backend oferece um ambiente técnico robusto e e
 # BACKLOG
 
 **Backend**
-- [x] /api/login (GET) - Login de acesso
 - [ ] Testes unitários de autenticação
 - [ ] Testes unitários do controlador de usuários

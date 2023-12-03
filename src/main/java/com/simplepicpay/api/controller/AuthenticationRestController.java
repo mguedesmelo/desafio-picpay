@@ -43,10 +43,13 @@ public class AuthenticationRestController {
 
 	@PostMapping("/login")
 	public ResponseEntity<LoginResponseDto> login(@RequestBody @Valid LoginRequestDto loginRequestDto) {
-		UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
+		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
 				loginRequestDto.email(), loginRequestDto.password());
-		Authentication auth = this.authenticationManager.authenticate(authentication);
-		String token = this.tokenService.generateToken((User) auth.getPrincipal());
+		Authentication authentication = this.authenticationManager.authenticate(authenticationToken);
+		if (authentication.getPrincipal() == null) {
+			throw new BusinessException("Invalid login or password");
+		}
+		String token = this.tokenService.generateToken((User) authentication.getPrincipal());
 
 		return ResponseEntity.ok(new LoginResponseDto(token, loginRequestDto.email()));
 	}

@@ -8,6 +8,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonProperty.Access;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -26,29 +30,29 @@ import lombok.Setter;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "tb_user")
+@JsonIgnoreProperties({"accountNonExpired", "enabled", "credentialsNonExpired", 
+	"username", "authorities", "accountNonLocked"})
 public class User extends BaseEntity implements UserDetails {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1753055857941816318L;
 
-	@Column(name = "first_name", nullable = false)
-	private String firstName;
-
-    @Column(name = "last_name", nullable = false)
-	private String lastName;
+	@Column(name = "document", unique = true, nullable = false)
+	private String document;
+	
+	@Column(name = "name", nullable = false)
+	private String name;
 
     @Column(name = "email", unique = true, nullable = false)
 	private String email;
 
     @Column(name = "user_passwd", nullable = false)
+    @JsonProperty(access = Access.WRITE_ONLY)
 	private String password;
 
     @Column(name = "balance", nullable = false)
 	private BigDecimal balance;
-
-	@Column(name = "document", unique = true, nullable = false)
-	private String document;
 
     @Enumerated(EnumType.STRING)
 	@Column(name = "user_type", nullable = false)
@@ -75,27 +79,27 @@ public class User extends BaseEntity implements UserDetails {
 
 	@Override
 	public boolean isAccountNonExpired() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "User [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", balance=" + balance
+		return "User [name=" + name + ", email=" + email + ", balance=" + balance
 				+ ", document=" + document + ", userType=" + userType + ", role=" + userRole + "]";
 	}
 }

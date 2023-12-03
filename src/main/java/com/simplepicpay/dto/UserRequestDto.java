@@ -10,13 +10,11 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record UserRequestDto(
-		@NotBlank 
-		@NotNull
-		String firstName,
+		Long id,
 
 		@NotBlank 
 		@NotNull
-		String lastName,
+		String name,
 
 		@NotBlank 
 		@NotNull

@@ -2,7 +2,7 @@ package com.simplepicpay.exception;
 
 import com.simplepicpay.shared.MessageResources;
 
-public class BusinessException extends Exception {
+public class BusinessException extends RuntimeException {
 	/**
 	 * 
 	 */

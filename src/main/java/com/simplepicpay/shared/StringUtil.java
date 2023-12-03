@@ -147,10 +147,10 @@ public final class StringUtil {
 		}
 	}
 
-	private static String formatarString(String texto, String mascara) throws ParseException {
-		MaskFormatter mf = new MaskFormatter(mascara);
+	private static String formatarString(String text, String mask) throws ParseException {
+		MaskFormatter mf = new MaskFormatter(mask);
 		mf.setValueContainsLiteralCharacters(false);
-		return mf.valueToString(texto);
+		return mf.valueToString(text);
 	}
 
 	public static String abbreviate(String s, int maxSize) {

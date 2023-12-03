@@ -8,6 +8,6 @@ public class Constants {
 	public static final String DATE_FORMAT = "dd/MM/yyyy";
 	public static final String DATE_FORMAT_JSON = "MM/dd/yyyy";
 
-	public static final String JWT_ISSUER = "walter_white_issuer";
-	public static final String JWT_SECRET_KEY = "walter_white_secret_key";
+	public static final String JWT_ISSUER = "picpay_issuer";
+	public static final String JWT_SECRET_KEY = "picpay_secret_key";
 }

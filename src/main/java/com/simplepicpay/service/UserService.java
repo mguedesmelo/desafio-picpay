@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.simplepicpay.dto.UserRequestDto;
@@ -22,7 +25,7 @@ import com.simplepicpay.validation.PayerHasBalanceValidation;
 import jakarta.transaction.Transactional;
 
 @Service
-public class UserService extends BaseService {
+public class UserService extends BaseService implements UserDetailsService {
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
@@ -34,9 +37,9 @@ public class UserService extends BaseService {
 
 	public User save(UserRequestDto userRequestDto) throws BusinessException {
 		this.clearValidations();
-		this.addValidation(new DocumentUniqueValidation(userRequestDto));
-		this.addValidation(new EmailUniqueValidation(userRequestDto));
-		performValidations();
+		this.addValidation(new DocumentUniqueValidation(userRequestDto.id(), userRequestDto.document()));
+		this.addValidation(new EmailUniqueValidation(userRequestDto.id(), userRequestDto.email()));
+//		performValidations();
 
 		return this.userRepository.save(this.userMapper.toModel(userRequestDto));
 	}
@@ -77,4 +80,10 @@ public class UserService extends BaseService {
 
 		return toReturn;
 	}
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return this.userRepository.findByEmail(username).orElseThrow(
+        		() -> new BusinessException("Invalid login or password"));
+    }
 }

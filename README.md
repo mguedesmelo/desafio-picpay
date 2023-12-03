@@ -79,6 +79,15 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 | 4 | Campos inválidos: retornar um erro com a mensagem “Invalid fields” | 400 |
 | 5 | Campos não preenchidos: retornar um erro com a mensagem “Missing fields” | 400 |
 
+
+**Exemplo de JSON para login:**
+```
+{
+  "email": "fulano@picpay.com",
+  "password": "h3ll0"
+}
+```
+
 **Exemplo de JSON para criação do usuário:**
 ```
 {
@@ -86,7 +95,7 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
   "email": "hello@world.com",
   "password": "h3ll0",
   "balance": "1200"
-  "document": "00000000000",
+  "document": "65574052687",
   "userType": "CUSTOMER",
   "userRole": "USER"
 }

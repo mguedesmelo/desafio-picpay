@@ -2,22 +2,22 @@ package com.simplepicpay.validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.simplepicpay.dto.UserRequestDto;
 import com.simplepicpay.repository.UserRepository;
 
 public class EmailUniqueValidation extends BaseValidation {
 	@Autowired
 	private UserRepository userRepository;
+	private Long id;
+	private String email;
 	
-	private UserRequestDto userRequestDto;
-	
-	public EmailUniqueValidation(UserRequestDto userRequestDto) {
+	public EmailUniqueValidation(Long id, String email) {
 		super("There is already a client with the informed e-mail");
-		this.userRequestDto = userRequestDto;
+		this.id = id;
+		this.email = email;
 	}
 
 	@Override
 	public boolean valid() {
-		return this.userRepository.findByDocument(this.userRequestDto.email()).isEmpty();
+		return this.userRepository.findByEmail(id, this.email).isEmpty();
 	}
 }

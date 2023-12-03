@@ -73,11 +73,11 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 **Erros possíveis:**
 | # | Descrição | HTTP Status Code | 
 | ------ | ------ | ------ |
-| 1. Login inexistente ou senha inválida: retornar um erro com a mensagem “Invalid login or password” | 400 |
-| 2. E-mail já existente: retornar um erro com a mensagem “Email already exists” | 400 |
-| 3. Login já existente: retornar um erro com a mensagem “Login already exists” | 400 |
-| 4. Campos inválidos: retornar um erro com a mensagem “Invalid fields” | 400 |
-| 5. Campos não preenchidos: retornar um erro com a mensagem “Missing fields” | 400 |
+| 1 | Login inexistente ou senha inválida: retornar um erro com a mensagem “Invalid login or password” | 400 |
+| 2 | E-mail já existente: retornar um erro com a mensagem “Email already exists” | 400 |
+| 3 | Login já existente: retornar um erro com a mensagem “Login already exists” | 400 |
+| 4 | Campos inválidos: retornar um erro com a mensagem “Invalid fields” | 400 |
+| 5 | Campos não preenchidos: retornar um erro com a mensagem “Missing fields” | 400 |
 
 **Exemplo de JSON para criação do usuário:**
 ```

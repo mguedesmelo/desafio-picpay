@@ -9,7 +9,6 @@ Ambos possuem uma carteira com dinheiro e realizam transferências entre eles.
 
 <div style="display: inline_block"><br>
   <img align="center" alt="mguedesmelo-java" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg">
-  <img align="center" alt="mguedesmelo-angular" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-plain.svg">
   <img align="center" alt="mguedesmelo-Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
   <img align="center" alt="mguedesmelo-Ts" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
   <img align="center" alt="mguedesmelo-HTML" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
@@ -27,7 +26,7 @@ Ambos possuem uma carteira com dinheiro e realizam transferências entre eles.
 * [Spring Tools 4 for Eclipse](https://spring.io/tools) - IDE
 
 ## ⌨️ Instalação
-1. Clone o repositório para baixar as pastas contendo o código fonte dos projeto Java e Angular.
+1. Clone o repositório para baixar as pastas contendo o código fonte dos projeto Java.
 
 ```
 git clone https://github.com/mguedesmelo/simplepicpay.git
@@ -95,7 +94,7 @@ Ao iniciar a aplicação são criados 3 usuários que devem ser usados para efei
 
 ## 🚧 Rotas
 
-**Rotas que **NÃO EXIGEM** autenticação**
+### Rotas que **NÃO EXIGEM** autenticação
 
 | Rota | Descrição | Tipo | Erros possíveis | Status |
 | ------ | ------ | ------ | ------ | ------ |
@@ -133,7 +132,7 @@ Ao iniciar a aplicação são criados 3 usuários que devem ser usados para efei
 }
 ```
 
-**Rotas que **EXIGEM** autenticação**
+### Rotas que **EXIGEM** autenticação
 
 Todas estas rotas esperam que seja enviado um Bearer Token no cabeçalho da requisição!
 
@@ -237,3 +236,4 @@ Em resumo, a escolha de Java no backend oferece um ambiente técnico robusto e e
 - [ ] Descrever APIs RESTful usando Swagger
 - [ ] Documentar padrões adotados (PSRs, design patterns, SOLID)
 - [ ] Testar o tratamento de erros
+- [ ] Criar frontend em Angular

@@ -1,7 +1,5 @@
 package com.simplepicpay.exception;
 
-import com.simplepicpay.shared.MessageResources;
-
 public class BusinessException extends RuntimeException {
 	/**
 	 * 
@@ -10,11 +8,5 @@ public class BusinessException extends RuntimeException {
 
 	public BusinessException(String message) {
 		super(message);
-	}
-
-	@Override
-	public String getMessage() {
-		// TODO Testar mudando o locale
-		return MessageResources.getText(super.getMessage());
 	}
 }

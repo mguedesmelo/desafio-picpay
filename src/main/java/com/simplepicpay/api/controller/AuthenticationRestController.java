@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -47,7 +48,7 @@ public class AuthenticationRestController {
 				loginRequestDto.email(), loginRequestDto.password());
 		Authentication authentication = this.authenticationManager.authenticate(authenticationToken);
 		if (authentication.getPrincipal() == null) {
-			throw new BusinessException("Invalid login or password");
+			throw new BusinessException("Invalid email or password");
 		}
 		String token = this.tokenService.generateToken((User) authentication.getPrincipal());
 

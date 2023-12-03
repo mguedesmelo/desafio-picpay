@@ -84,6 +84,6 @@ public class UserService extends BaseService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return this.userRepository.findByEmail(username).orElseThrow(
-        		() -> new BusinessException("Invalid login or password"));
+        		() -> new BusinessException("Invalid email or password"));
     }
 }

@@ -11,6 +11,6 @@ public class ResponseMessage {
 
 	@Override
 	public String toString() {
-		return String.format("{\"errorCode\":%s,\"message\":\"%s\"}", errorCode, message);
+		return String.format("{\n\t\"errorCode\":\"%s\",\n\t\"message\":\"%s\"\n}", errorCode, message);
 	}
 }

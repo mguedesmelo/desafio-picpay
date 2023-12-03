@@ -6,41 +6,6 @@ https://github.com/PicPay/picpay-desafio-backend
 Criar aplicação que exponha uma API RESTful para cadastrar 2 tipos de usuários (clientes e lojistas).
 Ambos possuem uma carteira com dinheiro e realizam transferências entre eles.
 
-Ao iniciar a aplicação são criados 3 usuários que devem ser usados para efeito de teste:
-```
-[
-    {
-        "id": 1,
-        "document": "86126937000123",
-        "name": "Amazon Shopping",
-        "email": "amazon@picpay.com",
-        "balance": 150.00,
-        "userType": "MERCHANT",
-        "userRole": "USER",
-        "createdAt": "2023-12-03T11:18:55.203052"
-    },
-    {
-        "id": 2,
-        "document": "65574052687",
-        "name": "Fulano Foo",
-        "email": "fulano@picpay.com",
-        "balance": 50.00,
-        "userType": "CUSTOMER",
-        "userRole": "USER",
-        "createdAt": "2023-12-03T11:18:55.215052"
-    },
-    {
-        "id": 3,
-        "document": "05152342570",
-        "name": "Ciclano Bar",
-        "email": "ciclano@picpay.com",
-        "balance": 50.00,
-        "userType": "CUSTOMER",
-        "userRole": "USER",
-        "createdAt": "2023-12-03T11:18:55.216053"
-    }
-]
-```
 
 <div style="display: inline_block"><br>
   <img align="center" alt="mguedesmelo-java" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg">
@@ -89,6 +54,44 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 | payer | User | Usuário que está realizando a transferência |
 | payee | User | Usuário que irá receber o valor transferido |
 | ammount | BigDecimal | Valor da transação |
+
+
+## 🧑 Usuários de Teste
+Ao iniciar a aplicação são criados 3 usuários que devem ser usados para efeito de teste:
+```
+[
+    {
+        "id": 1,
+        "document": "86126937000123",
+        "name": "Amazon Shopping",
+        "email": "amazon@picpay.com",
+        "balance": 150.00,
+        "userType": "MERCHANT",
+        "userRole": "USER",
+        "createdAt": "2023-12-03T11:18:55.203052"
+    },
+    {
+        "id": 2,
+        "document": "65574052687",
+        "name": "Fulano Foo",
+        "email": "fulano@picpay.com",
+        "balance": 50.00,
+        "userType": "CUSTOMER",
+        "userRole": "USER",
+        "createdAt": "2023-12-03T11:18:55.215052"
+    },
+    {
+        "id": 3,
+        "document": "05152342570",
+        "name": "Ciclano Bar",
+        "email": "ciclano@picpay.com",
+        "balance": 50.00,
+        "userType": "CUSTOMER",
+        "userRole": "USER",
+        "createdAt": "2023-12-03T11:18:55.216053"
+    }
+]
+```
 
 ## 🚧 Rotas
 

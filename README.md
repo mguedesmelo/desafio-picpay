@@ -45,7 +45,7 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 | password | String | Senha do usuário |
 | balance | BigDecimal | Saldo do usuário |
 | document | String | CPF/CNPJ do usuário |
-| userType | UserType | Tipo do usuário, pode ser CUSTOMER ou MERCHANT |
+| userType | UserType | Tipo do usuário, pode ser CUSTOMER ou COMPANY |
 | userRole | UserRole | Perfil do usuário, pode ser ADMIN ou USER |
 
 **Transação**
@@ -63,10 +63,10 @@ Ao iniciar a aplicação são criados 3 usuários que devem ser usados para efei
     {
         "id": 1,
         "document": "86126937000123",
-        "name": "Amazon Shopping",
-        "email": "amazon@picpay.com",
+        "name": "Company Shopping",
+        "email": "company@picpay.com",
         "balance": 150.00,
-        "userType": "MERCHANT",
+        "userType": "COMPANY",
         "userRole": "USER",
         "createdAt": "2023-12-03T11:18:55.203052"
     },

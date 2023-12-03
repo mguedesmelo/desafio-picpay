@@ -2,7 +2,7 @@ package com.simplepicpay.model;
 
 public enum UserType {
 	CUSTOMER("Customer"),
-	MERCHANT("Merchant");
+	COMPANY("Company");
 
 	private String type;
 

@@ -25,7 +25,7 @@ public class TransactionRestController {
 		Transaction transaction = this.userService.transfer(
 				transferDto.payer(), 
 				transferDto.payee(), 
-				transferDto.value());
+				transferDto.ammount());
 		return new ResponseEntity<Transaction>(transaction, HttpStatus.OK);
 	}
 }

@@ -103,12 +103,12 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 
 **Rotas que **EXIGEM** autenticação**
 
-Todas estas rotas esperam que seja enviado um token no cabeçalho da requisição.
+Todas estas rotas esperam que seja enviado um Bearer Token no cabeçalho da requisição!
 
 | Rota | Descrição | Tipo | Erros possíveis | Status | 
 | ------ | ------ | ------ | ------ | ------ |
 | /api/me | Retorna as informações do usuário logado | GET | 1,2 | Finalizado |
-| /api/transfer | Listar todos os carros do usuário logado | GET | 1,2 | Não iniciado |
+| /api/transfer | Realiza a transferência de um valor para outro usuário | POST | 1,2 | Não iniciado |
 
 **Erros possíveis:**
 | # | Descrição | HTTP Status Code | 

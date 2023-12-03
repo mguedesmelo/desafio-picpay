@@ -71,11 +71,13 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 | /api/user | Espera um objeto com os campos necessários para a criação de um usuário. Deve ser retornado as informações do usuário criado | POST | 2,3,4,5 | Não iniciado |
 
 **Erros possíveis:**
-1. Login inexistente ou senha inválida: retornar um erro com a mensagem “Invalid login or password”;
-2. E-mail já existente: retornar um erro com a mensagem “Email already exists”;
-3. Login já existente: retornar um erro com a mensagem “Login already exists”;
-4. Campos inválidos: retornar um erro com a mensagem “Invalid fields”;
-5. Campos não preenchidos: retornar um erro com a mensagem “Missing fields”.
+| # | Descrição | HTTP Status Code | 
+| ------ | ------ | ------ |
+| 1. Login inexistente ou senha inválida: retornar um erro com a mensagem “Invalid login or password” | 400 |
+| 2. E-mail já existente: retornar um erro com a mensagem “Email already exists” | 400 |
+| 3. Login já existente: retornar um erro com a mensagem “Login already exists” | 400 |
+| 4. Campos inválidos: retornar um erro com a mensagem “Invalid fields” | 400 |
+| 5. Campos não preenchidos: retornar um erro com a mensagem “Missing fields” | 400 |
 
 **Exemplo de JSON para criação do usuário:**
 ```

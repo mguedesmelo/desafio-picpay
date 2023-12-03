@@ -11,7 +11,7 @@ Habilitar autenticação e validação via JWT
 https://github.com/PicPay/picpay-desafio-backend
 
 Criar aplicação que exponha uma API RESTful para cadastrar 2 tipos de usuários (clientes e lojistas).
-Ambos têm carteira com dinheiro e realizam transferências entre eles.
+Ambos possuem uma carteira com dinheiro e realizam transferências entre eles.
 
 <div style="display: inline_block"><br>
   <img align="center" alt="mguedesmelo-java" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg">
@@ -46,8 +46,7 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 **Usuário**
 | Nome | Tipo | Descrição |
 | ------ | ------ | ------ |
-| firstName | String | Primeiro nome do usuário |
-| lastName | String | Último nome do usuário |
+| name | String | Nome do usuário |
 | email | String | E-mail do usuário |
 | password | String | Senha do usuário |
 | balance | BigDecimal | Saldo do usuário |
@@ -81,8 +80,7 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 **Exemplo de JSON para criação do usuário:**
 ```
 {
-  "firstName": "Hello",
-  "lastName": "World",
+  "name": "Hello World",
   "email": "hello@world.com",
   "password": "h3ll0",
   "balance": "1200"
@@ -98,15 +96,19 @@ Todas estas rotas esperam que seja enviado um token no cabeçalho da requisiçã
 
 | Rota | Descrição | Tipo | Erros possíveis | Status | 
 | ------ | ------ | ------ | ------ | ------ |
-| /api/me | Retorna as informações do usuário logado | GET | 1,2 | Não iniciado |
+| /api/me | Retorna as informações do usuário logado | GET | 1,2 | Finalizado |
 | /api/transfer | Listar todos os carros do usuário logado | GET | 1,2 | Não iniciado |
 
 **Erros possíveis:**
-1. Token não enviado: retornar um erro com a mensagem “Unauthorized”;
-2. Token expirado: retornar um erro com a mensagem “Unauthorized - invalid session”;
-3. Campos inválidos: retornar um erro com a mensagem “Invalid fields”;
-4. Campos não preenchidos: retornar um erro com a mensagem “Missing fields”.
-
+| # | Descrição | HTTP Status Code | 
+| ------ | ------ | ------ |
+| 1 | Token não enviado: retornar um erro com a mensagem “Unauthorized” | 400 |
+| 2 | Token expirado: retornar um erro com a mensagem “Unauthorized - invalid session” | 400 |
+| 3 | Campos inválidos: retornar um erro com a mensagem “Invalid fields” | 400 |
+| 4 | Campos não preenchidos: retornar um erro com a mensagem “Missing fields” | 400 |
+| 5 | Usuário pagante é uma loja: retornar um erro com a mensagem “Unauthorized” | 400 |
+| 6 | Usuário pagante não possui saldo: retornar um erro com a mensagem “Customer does not have a balance” | 400 |
+| 7 | Validar transferência no serviço autorizador externo: retornar um erro com a mensagem “Unauthorized” | 400 |
 
 **Exemplo de JSON para realização de transferência:**
 ```

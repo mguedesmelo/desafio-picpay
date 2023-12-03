@@ -139,7 +139,8 @@ Todas estas rotas esperam que seja enviado um Bearer Token no cabeçalho da requ
 | Rota | Descrição | Tipo | Erros possíveis | Status | 
 | ------ | ------ | ------ | ------ | ------ |
 | /api/me | Retorna as informações do usuário logado | GET | 1,2 | Finalizado |
-| /api/transfer | Realiza a transferência de um valor para outro usuário | POST | 1,2 | Não iniciado |
+| /api/user | Listagem dos usuário cadastrados | GET | 1,2 | Finalizado |
+| /api/transfer | Realiza a transferência de um valor para outro usuário | POST | 1,2,3,4 | Não iniciado |
 
 **Erros possíveis:**
 | # | Descrição | HTTP Status Code | 

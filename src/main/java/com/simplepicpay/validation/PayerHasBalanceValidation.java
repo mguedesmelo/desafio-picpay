@@ -11,6 +11,7 @@ public class PayerHasBalanceValidation extends BaseValidation {
 	public PayerHasBalanceValidation(User payer, BigDecimal ammount) {
 		super("Insufficient funds");
 		this.payer = payer;
+		this.ammount = ammount;
 	}
 
 	@Override

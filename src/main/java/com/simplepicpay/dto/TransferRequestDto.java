@@ -11,7 +11,7 @@ public record TransferRequestDto(
 		Long payee, 
 		
 		@NotNull
-		BigDecimal value
+		BigDecimal ammount
 		) {
 	// Empty
 }

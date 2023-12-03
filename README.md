@@ -66,10 +66,10 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 
 **Rotas que **NÃO EXIGEM** autenticação**
 
-| Rota | Descrição | Tipo | Erros possíveis |
-| ------ | ------ | ------ | ------ |
-| /api/login | Esta rota espera um objeto com os campos login e password. Deve ser retornado o token de acesso da API (JWT) com as informações do usuário logado | POST | 1 |
-| /api/user | Esta rota espera um objeto com os campos do usuário. Deve ser retornado as informações do usuário criado | POST | 2,3,4,5 |
+| Finalizado | Rota | Descrição | Tipo | Erros possíveis |
+| ------ | ------ | ------ | ------ | ------ |
+| [X] | /api/login | Espera um objeto com os campos login e password para efetua o login. Deve ser retornado o token de acesso da API (JWT) com as informações do usuário logado | POST | 1 |
+| [ ] | /api/user | Espera um objeto com os campos necessários para a criação de um usuário. Deve ser retornado as informações do usuário criado | POST | 2,3,4,5 |
 
 **Erros possíveis:**
 1. Login inexistente ou senha inválida: retornar um erro com a mensagem “Invalid login or password”;
@@ -94,10 +94,12 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 
 **Rotas que **EXIGEM** autenticação**
 
-| Rota | Descrição | Tipo | Erros possíveis |
+Todas estas rotas esperam que seja enviado um token no cabeçalho da requisição.
+
+| Finalizado | Rota | Descrição | Tipo | Erros possíveis |
 | ------ | ------ | ------ | ------ |
-| /api/me | Retorna as informações do usuário logado | GET | 1,2 |
-| /api/transfer | Listar todos os carros do usuário logado | GET | 1,2 |
+| [ ] | /api/me | Retorna as informações do usuário logado | GET | 1,2 |
+| [ ] | /api/transfer | Listar todos os carros do usuário logado | GET | 1,2 |
 
 **Erros possíveis:**
 1. Token não enviado: retornar um erro com a mensagem “Unauthorized”;

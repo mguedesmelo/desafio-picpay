@@ -97,7 +97,7 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 Todas estas rotas esperam que seja enviado um token no cabeçalho da requisição.
 
 | Rota | Descrição | Tipo | Erros possíveis | Status | 
-| ------ | ------ | ------ | ------ |
+| ------ | ------ | ------ | ------ | ------ |
 | /api/me | Retorna as informações do usuário logado | GET | 1,2 | Não iniciado |
 | /api/transfer | Listar todos os carros do usuário logado | GET | 1,2 | Não iniciado |
 

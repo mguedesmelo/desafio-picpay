@@ -68,7 +68,7 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 
 | Finalizado | Rota | Descrição | Tipo | Erros possíveis |
 | ------ | ------ | ------ | ------ | ------ |
-| [X] | /api/login | Espera um objeto com os campos login e password para efetua o login. Deve ser retornado o token de acesso da API (JWT) com as informações do usuário logado | POST | 1 |
+| [x] | /api/login | Espera um objeto com os campos login e password para efetua o login. Deve ser retornado o token de acesso da API (JWT) com as informações do usuário logado | POST | 1 |
 | [ ] | /api/user | Espera um objeto com os campos necessários para a criação de um usuário. Deve ser retornado as informações do usuário criado | POST | 2,3,4,5 |
 
 **Erros possíveis:**

@@ -23,6 +23,7 @@ public class SimplePicpayApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+//		h3ll0 = $2a$10$SDelfowfCRWei0rkUI5IIO1dLNKYrcHP4cjbjoJLViYj4h/0a7VdO
 		this.userService.save(new UserRequestDto(
 				null, 
 				"Company Shopping", 

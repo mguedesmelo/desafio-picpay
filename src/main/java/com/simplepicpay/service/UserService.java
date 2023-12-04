@@ -37,9 +37,11 @@ public class UserService extends BaseService implements UserDetailsService {
 
 	public User save(UserRequestDto userRequestDto) throws BusinessException {
 		this.clearValidations();
-		this.addValidation(new DocumentUniqueValidation(userRequestDto.id(), userRequestDto.document()));
-		this.addValidation(new EmailUniqueValidation(userRequestDto.id(), userRequestDto.email()));
-//		performValidations();
+		this.addValidation(new DocumentUniqueValidation(userRequestDto.id(), 
+				userRequestDto.document(), this.userRepository));
+		this.addValidation(new EmailUniqueValidation(userRequestDto.id(), 
+				userRequestDto.email(), this.userRepository));
+		performValidations();
 
 		return this.userRepository.save(this.userMapper.toModel(userRequestDto));
 	}

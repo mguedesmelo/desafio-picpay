@@ -1,19 +1,17 @@
 package com.simplepicpay.validation;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.simplepicpay.repository.UserRepository;
 
 public class DocumentUniqueValidation extends BaseValidation {
-	@Autowired
 	private UserRepository userRepository;
 	private Long id;
 	private String document;
 
-	public DocumentUniqueValidation(Long id, String document) {
+	public DocumentUniqueValidation(Long id, String document, UserRepository userRepository) {
 		super("There is already a client with the informed document");
 		this.id = id;
 		this.document = document;
+		this.userRepository = userRepository;
 	}
 
 	@Override

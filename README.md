@@ -106,7 +106,7 @@ Ao iniciar a aplicação são criados 3 usuários que devem ser usados para efei
 | ------ | ------ | ------ |
 | 1 | Login inexistente ou senha inválida: retornar um erro com a mensagem “Invalid email or password” | 400 |
 | 2 | E-mail já existente: retornar um erro com a mensagem “Email already exists” | 400 |
-| 3 | Login já existente: retornar um erro com a mensagem “Login already exists” | 400 |
+| 3 | CPF/CNPJ já existente: retornar um erro com a mensagem “Document already exists” | 400 |
 | 4 | Campos inválidos: retornar um erro com a mensagem “Invalid fields” | 400 |
 | 5 | Campos não preenchidos: retornar um erro com a mensagem “Missing fields” | 400 |
 
@@ -232,9 +232,10 @@ Em resumo, a escolha de Java no backend oferece um ambiente técnico robusto e e
 # BACKLOG
 
 - [x] Habilitar autenticação e validação via JWT
-- [ ] Testes unitários de autenticação
+- [x] Testes unitários de autenticação
 - [ ] Testes unitários do controlador de usuários
+- [ ] Testes unitários do controlador de transferências
 - [ ] Descrever APIs RESTful usando Swagger
 - [ ] Documentar padrões adotados (PSRs, design patterns, SOLID)
 - [ ] Testar o tratamento de erros
-- [ ] Criar frontend em Angular
+- [ ] Criar frontend em Angular?

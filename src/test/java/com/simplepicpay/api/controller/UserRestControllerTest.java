@@ -2,6 +2,7 @@ package com.simplepicpay.api.controller;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -45,12 +46,10 @@ class UserRestControllerTest extends BaseRestControllerTest {
     	List<User> userList = (List<User>) mapper.readValue(
     			result.getResponse().getContentAsString(), 
 				new TypeReference<List<User>>() { });
-
-    	for (User u : userList) {
-			System.out.println(u.toString());
-		}
-		
 		assertFalse(userList.isEmpty());
+		userList.forEach(u -> {
+			assertInstanceOf(User.class, u);
+		});
 	}
 
 	@Test
@@ -66,7 +65,7 @@ class UserRestControllerTest extends BaseRestControllerTest {
 				"99999999999999", 
 				UserType.COMPANY.name(), 
 				UserRole.USER.name());
-		
+
 		MvcResult resultUserCompany = mvc.perform(MockMvcRequestBuilders
 	            .post("/api/user")
 	            .content(toJson(userCompany))
@@ -93,7 +92,7 @@ class UserRestControllerTest extends BaseRestControllerTest {
 				"66666666666", 
 				UserType.CUSTOMER.name(), 
 				UserRole.USER.name());
-		
+
 		MvcResult resultUserCustomer = mvc.perform(MockMvcRequestBuilders
 	            .post("/api/user")
 	            .content(toJson(userCustomer))
@@ -120,7 +119,7 @@ class UserRestControllerTest extends BaseRestControllerTest {
 				"66666666666", 
 				UserType.CUSTOMER.name(), 
 				UserRole.USER.name());
-		
+
 		MvcResult resultUserCustomer = mvc.perform(MockMvcRequestBuilders
 	            .post("/api/user")
 	            .content(toJson(userCustomer))
@@ -144,7 +143,7 @@ class UserRestControllerTest extends BaseRestControllerTest {
 				"86126937000123", 
 				UserType.COMPANY.name(), 
 				UserRole.USER.name());
-		
+
 		MvcResult resultUserCustomer = mvc.perform(MockMvcRequestBuilders
 	            .post("/api/user")
 	            .content(toJson(userCustomer))

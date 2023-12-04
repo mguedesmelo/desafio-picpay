@@ -89,8 +89,8 @@ Ao iniciar a aplicação são criados 3 usuários que devem ser usados para efei
 
 | Rota | Descrição | Tipo | Erros possíveis | Status |
 | ------ | ------ | ------ | ------ | ------ |
-| /api/login | Espera receber um objeto com os campos login e password para efetuar o login. Deve ser retornado o token de acesso da API (JWT) | POST | 1 | Finalizado |
-| /api/user | Espera receber um objeto com os campos necessários para a criação de um usuário. Devem ser retornadas as informações do usuário criado | POST | 2,3,4,5 | Em desenvolvimento |
+| /api/open/login | Espera receber um objeto com os campos login e password para efetuar o login. Deve ser retornado o token de acesso da API (JWT) | POST | 1 | Finalizado |
+| /api/open/user | Espera receber um objeto com os campos necessários para a criação de um usuário. Devem ser retornadas as informações do usuário criado | POST | 2,3,4,5 | Em desenvolvimento |
 
 **Erros possíveis:**
 | # | Descrição | HTTP Status Code | 
@@ -131,7 +131,7 @@ Todas estas rotas esperam que seja enviado um Bearer Token no cabeçalho da requ
 | ------ | ------ | ------ | ------ | ------ |
 | /api/me | Retorna as informações do usuário logado | GET | 1,2 | Finalizado |
 | /api/user | Listagem dos usuário cadastrados | GET | 1,2 | Finalizado |
-| /api/transfer | Realiza a transferência de um valor para outro usuário | POST | 1,2,3,4 | Não iniciado |
+| /api/transfer | Realiza a transferência de um valor para outro usuário | POST | 1,2,3,4,5,6,7 | Em desenvolvimento |
 
 **Erros possíveis:**
 | # | Descrição | HTTP Status Code | 

@@ -6,11 +6,6 @@ https://github.com/PicPay/picpay-desafio-backend
 Criar aplicação que exponha uma API RESTful para cadastrar 2 tipos de usuários (clientes e lojistas).
 Ambos possuem uma carteira com dinheiro e realizam transferências entre eles.
 
-
-<div style="display: inline_block"><br>
-  <img align="center" alt="mguedesmelo-java" height="60" width="80" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg">
-</div>
-
 ## 💻 Tecnologias
 * [Java](https://www.java.com/) - Linguagem Backend
 * [Spring](https://spring.io/) - Framework Web Java

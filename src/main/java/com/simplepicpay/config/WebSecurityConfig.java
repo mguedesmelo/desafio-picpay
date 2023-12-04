@@ -6,6 +6,7 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -47,7 +48,6 @@ public class WebSecurityConfig {
 						.requestMatchers(
 								antMatcher("/h2-console/**/**"),
 
-
 								antMatcher("/swagger-ui/**"),
 				                antMatcher("/api-docs"), 
 				                antMatcher("/api-docs/**"), 
@@ -69,7 +69,8 @@ public class WebSecurityConfig {
 //								antMatcher("/swagger-ui.html"),
 //								antMatcher("/swagger-ui/**"),
 
-								antMatcher("/api/login"), 
+								antMatcher("/api/login"),
+								antMatcher(HttpMethod.POST, "/api/user"), 
 
 								antMatcher("/favicon.ico"), 
 								antMatcher("/css/**"), 

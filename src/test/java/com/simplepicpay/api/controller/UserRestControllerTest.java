@@ -54,7 +54,8 @@ class UserRestControllerTest extends BaseRestControllerTest {
 
 	@Test
 	void testSaveCompany() throws Exception {
-		LoginResponseDto loginResponseDto = getValidToken();
+		// FIXME Para salvar usuarios não precisa estar logado, ou seja, não precisa enviar o token
+//		LoginResponseDto loginResponseDto = getValidToken();
 
 		UserRequestDto userCompany = new UserRequestDto(
 				null, 
@@ -70,7 +71,8 @@ class UserRestControllerTest extends BaseRestControllerTest {
 	            .post("/api/user")
 	            .content(toJson(userCompany))
 	            .contentType(MediaType.APPLICATION_JSON)
-	            .header("Authorization", "Bearer " + loginResponseDto.token()))
+//	            .header("Authorization", "Bearer " + loginResponseDto.token())
+	            )
 	            .andExpect(status().isOk())
 	            .andReturn();
 		User userCreatedCompany = (User) fromJson(
@@ -81,7 +83,8 @@ class UserRestControllerTest extends BaseRestControllerTest {
 
 	@Test
 	void testSaveCustomer() throws Exception {
-		LoginResponseDto loginResponseDto = getValidToken();
+		// FIXME Para salvar usuarios não precisa estar logado, ou seja, não precisa enviar o token
+//		LoginResponseDto loginResponseDto = getValidToken();
 
 		UserRequestDto userCustomer = new UserRequestDto(
 				null, 
@@ -97,7 +100,8 @@ class UserRestControllerTest extends BaseRestControllerTest {
 	            .post("/api/user")
 	            .content(toJson(userCustomer))
 	            .contentType(MediaType.APPLICATION_JSON)
-	            .header("Authorization", "Bearer " + loginResponseDto.token()))
+//	            .header("Authorization", "Bearer " + loginResponseDto.token())
+	            )
 	            .andExpect(status().isOk())
 	            .andReturn();
 		User userCreatedCustomer = (User) fromJson(
@@ -108,7 +112,8 @@ class UserRestControllerTest extends BaseRestControllerTest {
 
 	@Test
 	void testSaveEmailAlreadyExists() throws Exception {
-		LoginResponseDto loginResponseDto = getValidToken();
+		// FIXME Para salvar usuarios não precisa estar logado, ou seja, não precisa enviar o token
+//		LoginResponseDto loginResponseDto = getValidToken();
 
 		UserRequestDto userCustomer = new UserRequestDto(
 				null, 
@@ -124,7 +129,8 @@ class UserRestControllerTest extends BaseRestControllerTest {
 	            .post("/api/user")
 	            .content(toJson(userCustomer))
 	            .contentType(MediaType.APPLICATION_JSON)
-	            .header("Authorization", "Bearer " + loginResponseDto.token()))
+//	            .header("Authorization", "Bearer " + loginResponseDto.token())
+	            )
 	            .andExpect(status().isBadRequest())
 	            .andReturn();
 		assertEquals(resultUserCustomer.getResponse().getStatus(), HttpStatus.BAD_REQUEST.value());
@@ -132,7 +138,8 @@ class UserRestControllerTest extends BaseRestControllerTest {
 
 	@Test
 	void testSaveDocumentAlreadyExists() throws Exception {
-		LoginResponseDto loginResponseDto = getValidToken();
+		// FIXME Para salvar usuarios não precisa estar logado, ou seja, não precisa enviar o token
+//		LoginResponseDto loginResponseDto = getValidToken();
 
 		UserRequestDto userCustomer = new UserRequestDto(
 				null, 
@@ -148,7 +155,8 @@ class UserRestControllerTest extends BaseRestControllerTest {
 	            .post("/api/user")
 	            .content(toJson(userCustomer))
 	            .contentType(MediaType.APPLICATION_JSON)
-	            .header("Authorization", "Bearer " + loginResponseDto.token()))
+//	            .header("Authorization", "Bearer " + loginResponseDto.token())
+	            )
 	            .andExpect(status().isBadRequest())
 	            .andReturn();
 		assertEquals(resultUserCustomer.getResponse().getStatus(), HttpStatus.BAD_REQUEST.value());

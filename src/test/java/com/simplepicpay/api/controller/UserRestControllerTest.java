@@ -36,6 +36,7 @@ class UserRestControllerTest extends BaseRestControllerTest {
 		LoginResponseDto loginResponseDto = getValidToken();
 		MvcResult result = mvc.perform(MockMvcRequestBuilders
 	            .get("/api/user")
+	            .servletPath("/api/user")
 	            .contentType(MediaType.APPLICATION_JSON)
 	            .header("Authorization", "Bearer " + loginResponseDto.token()))
 	            .andExpect(status().isOk())
@@ -54,9 +55,6 @@ class UserRestControllerTest extends BaseRestControllerTest {
 
 	@Test
 	void testSaveCompany() throws Exception {
-		// FIXME Para salvar usuarios não precisa estar logado, ou seja, não precisa enviar o token
-//		LoginResponseDto loginResponseDto = getValidToken();
-
 		UserRequestDto userCompany = new UserRequestDto(
 				null, 
 				"Company Outlet", 
@@ -68,10 +66,10 @@ class UserRestControllerTest extends BaseRestControllerTest {
 				UserRole.USER.name());
 
 		MvcResult resultUserCompany = mvc.perform(MockMvcRequestBuilders
-	            .post("/api/user")
+	            .post("/api/open/user")
+	            .servletPath("/api/open/user")
 	            .content(toJson(userCompany))
 	            .contentType(MediaType.APPLICATION_JSON)
-//	            .header("Authorization", "Bearer " + loginResponseDto.token())
 	            )
 	            .andExpect(status().isOk())
 	            .andReturn();
@@ -83,9 +81,6 @@ class UserRestControllerTest extends BaseRestControllerTest {
 
 	@Test
 	void testSaveCustomer() throws Exception {
-		// FIXME Para salvar usuarios não precisa estar logado, ou seja, não precisa enviar o token
-//		LoginResponseDto loginResponseDto = getValidToken();
-
 		UserRequestDto userCustomer = new UserRequestDto(
 				null, 
 				"Beltrano Foo", 
@@ -97,10 +92,10 @@ class UserRestControllerTest extends BaseRestControllerTest {
 				UserRole.USER.name());
 
 		MvcResult resultUserCustomer = mvc.perform(MockMvcRequestBuilders
-	            .post("/api/user")
+	            .post("/api/open/user")
+	            .servletPath("/api/open/user")
 	            .content(toJson(userCustomer))
 	            .contentType(MediaType.APPLICATION_JSON)
-//	            .header("Authorization", "Bearer " + loginResponseDto.token())
 	            )
 	            .andExpect(status().isOk())
 	            .andReturn();
@@ -112,9 +107,6 @@ class UserRestControllerTest extends BaseRestControllerTest {
 
 	@Test
 	void testSaveEmailAlreadyExists() throws Exception {
-		// FIXME Para salvar usuarios não precisa estar logado, ou seja, não precisa enviar o token
-//		LoginResponseDto loginResponseDto = getValidToken();
-
 		UserRequestDto userCustomer = new UserRequestDto(
 				null, 
 				"Ciclano Foo", 
@@ -126,10 +118,10 @@ class UserRestControllerTest extends BaseRestControllerTest {
 				UserRole.USER.name());
 
 		MvcResult resultUserCustomer = mvc.perform(MockMvcRequestBuilders
-	            .post("/api/user")
+	            .post("/api/open/user")
+	            .servletPath("/api/open/user")
 	            .content(toJson(userCustomer))
 	            .contentType(MediaType.APPLICATION_JSON)
-//	            .header("Authorization", "Bearer " + loginResponseDto.token())
 	            )
 	            .andExpect(status().isBadRequest())
 	            .andReturn();
@@ -138,9 +130,6 @@ class UserRestControllerTest extends BaseRestControllerTest {
 
 	@Test
 	void testSaveDocumentAlreadyExists() throws Exception {
-		// FIXME Para salvar usuarios não precisa estar logado, ou seja, não precisa enviar o token
-//		LoginResponseDto loginResponseDto = getValidToken();
-
 		UserRequestDto userCustomer = new UserRequestDto(
 				null, 
 				"Ciclano Foo", 
@@ -152,10 +141,10 @@ class UserRestControllerTest extends BaseRestControllerTest {
 				UserRole.USER.name());
 
 		MvcResult resultUserCustomer = mvc.perform(MockMvcRequestBuilders
-	            .post("/api/user")
+	            .post("/api/open/user")
+	            .servletPath("/api/open/user")
 	            .content(toJson(userCustomer))
 	            .contentType(MediaType.APPLICATION_JSON)
-//	            .header("Authorization", "Bearer " + loginResponseDto.token())
 	            )
 	            .andExpect(status().isBadRequest())
 	            .andReturn();

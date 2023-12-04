@@ -63,8 +63,8 @@ public class BaseRestControllerTest {
 
     protected MvcResult perform(String email, String password, ResultMatcher expectedStatus) throws Exception {
 		return mvc.perform(MockMvcRequestBuilders
-				.post("/api/login")
-				.servletPath("/api/login")
+				.post("/api/open/login")
+				.servletPath("/api/open/login")
 				.content(toJson(new LoginRequestDto(email, password)))
 				.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(expectedStatus)

@@ -17,18 +17,18 @@ import com.simplepicpay.model.User;
 import com.simplepicpay.service.UserService;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api")
 public class UserRestController {
 	@Autowired
 	private UserService userService;
 
-	@PostMapping
+	@PostMapping("/open/user")
 	public ResponseEntity<User> save(@RequestBody UserRequestDto userDto) throws BusinessException {
 		User user = this.userService.save(userDto);
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 
-	@GetMapping
+	@GetMapping("/user")
 	public ResponseEntity<List<User>> findAll() {
 		List<User> toReturn = this.userService.findAll();
 		return new ResponseEntity<List<User>>(toReturn, HttpStatus.OK);

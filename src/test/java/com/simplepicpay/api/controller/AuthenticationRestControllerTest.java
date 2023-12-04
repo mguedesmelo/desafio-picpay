@@ -27,18 +27,14 @@ class AuthenticationRestControllerTest extends BaseRestControllerTest {
 	void testLoginInvalidEmail() throws Exception {
 		MvcResult result = perform("invalid@picpay.com", "h3ll0", status().isBadRequest());
 
-		int statusCode = result.getResponse().getStatus();
-
-		assertEquals(statusCode, 400);
+		assertEquals(result.getResponse().getStatus(), 400);
 	}
 
 	@Test
 	void testLoginInvalidPassword() throws Exception {
 		MvcResult result = perform("fulano@picpay.com", "invalid", status().isBadRequest());
 
-		int statusCode = result.getResponse().getStatus();
-
-		assertEquals(statusCode, 400);
+		assertEquals(result.getResponse().getStatus(), 400);
 	}
 
 	@Test
@@ -50,7 +46,7 @@ class AuthenticationRestControllerTest extends BaseRestControllerTest {
 	            .header("Authorization", "Bearer " + loginResponseDto.token()))
 	            .andExpect(status().isOk())
 	            .andReturn();
-		// FIXME Endpoint /api/me deve retornar um objeto DTO??
+		// TODO Endpoint /api/me deve retornar um objeto DTO??
 //		User userJson = (User) fromJson(result.getResponse().getContentAsString(), User.class);
 		String userJson = result.getResponse().getContentAsString();
 		assertNotNull(userJson);

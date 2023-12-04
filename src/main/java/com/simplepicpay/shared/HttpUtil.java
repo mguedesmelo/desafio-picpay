@@ -17,7 +17,7 @@ public class HttpUtil {
     private ObjectMapper objectMapper;
 
 	private List<String> freePatterns = List.of(
-			"/api/login", 
+			"/api/open", 
 			"/h2-console",
 
 			"/v1",

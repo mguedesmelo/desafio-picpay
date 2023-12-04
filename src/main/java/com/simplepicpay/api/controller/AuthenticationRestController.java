@@ -41,7 +41,7 @@ public class AuthenticationRestController {
         return null;
 	}
 
-	@PostMapping("/login")
+	@PostMapping("/open/login")
 	public ResponseEntity<LoginResponseDto> login(@RequestBody @Valid LoginRequestDto loginRequestDto) {
 		UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
 				loginRequestDto.email(), loginRequestDto.password());

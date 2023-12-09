@@ -19,7 +19,7 @@ import com.simplepicpay.repository.UserRepository;
 import com.simplepicpay.validation.AuthorizeTransferValidation;
 import com.simplepicpay.validation.DocumentUniqueValidation;
 import com.simplepicpay.validation.EmailUniqueValidation;
-import com.simplepicpay.validation.OnlyUserCanTransferValidation;
+import com.simplepicpay.validation.OnlyCustomerCanTransferValidation;
 import com.simplepicpay.validation.PayerHasBalanceValidation;
 
 import jakarta.transaction.Transactional;
@@ -50,6 +50,10 @@ public class UserService extends BaseService implements UserDetailsService {
 		return this.userRepository.findByEmail(email).orElse(null);
 	}
 	
+	public User findById(Long id) {
+		return this.userRepository.findById(id).orElse(null);
+	}
+	
 	public void delete(User user) {
 		this.userRepository.delete(user);
 	}
@@ -66,7 +70,7 @@ public class UserService extends BaseService implements UserDetailsService {
 				.orElseThrow(() -> new BusinessException("Payee not found"));
 
 		this.clearValidations();
-		this.addValidation(new OnlyUserCanTransferValidation(payer));
+		this.addValidation(new OnlyCustomerCanTransferValidation(payer));
 		this.addValidation(new PayerHasBalanceValidation(payer, ammount));
 		this.addValidation(new AuthorizeTransferValidation());
 		performValidations();

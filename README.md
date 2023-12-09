@@ -55,7 +55,8 @@ Ao iniciar a aplicação são criados 3 usuários que devem ser usados para efei
         "document": "86126937000123",
         "name": "Company Shopping",
         "email": "company@picpay.com",
-        "balance": 150.00,
+        "password":"h3ll0",
+        "balance": 1500.00,
         "userType": "COMPANY",
         "userRole": "USER",
         "createdAt": "2023-12-03T11:18:55.203052"
@@ -65,7 +66,8 @@ Ao iniciar a aplicação são criados 3 usuários que devem ser usados para efei
         "document": "65574052687",
         "name": "Fulano Foo",
         "email": "fulano@picpay.com",
-        "balance": 50.00,
+        "password":"h3ll0",
+        "balance": 500.00,
         "userType": "CUSTOMER",
         "userRole": "USER",
         "createdAt": "2023-12-03T11:18:55.215052"
@@ -75,7 +77,8 @@ Ao iniciar a aplicação são criados 3 usuários que devem ser usados para efei
         "document": "05152342570",
         "name": "Ciclano Bar",
         "email": "ciclano@picpay.com",
-        "balance": 50.00,
+        "password":"h3ll0",
+        "balance": 600.00,
         "userType": "CUSTOMER",
         "userRole": "USER",
         "createdAt": "2023-12-03T11:18:55.216053"

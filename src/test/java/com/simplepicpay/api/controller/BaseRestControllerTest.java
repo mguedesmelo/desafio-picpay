@@ -51,7 +51,7 @@ public class BaseRestControllerTest {
     }
 
     protected String getToken(String email, String password) throws Exception {
-		MvcResult result = perform(email, password, status().isOk());
+		MvcResult result = performLogin(email, password, status().isOk());
 		
 		return result.getResponse().getContentAsString();
 	}
@@ -61,7 +61,8 @@ public class BaseRestControllerTest {
 		return (LoginResponseDto) fromJson(token, LoginResponseDto.class);
 	}
 
-    protected MvcResult perform(String email, String password, ResultMatcher expectedStatus) throws Exception {
+    protected MvcResult performLogin(String email, String password, 
+    		ResultMatcher expectedStatus) throws Exception {
 		return mvc.perform(MockMvcRequestBuilders
 				.post("/api/open/login")
 				.servletPath("/api/open/login")
@@ -70,6 +71,4 @@ public class BaseRestControllerTest {
 				.andExpect(expectedStatus)
 				.andReturn();
 	}
-
-
 }

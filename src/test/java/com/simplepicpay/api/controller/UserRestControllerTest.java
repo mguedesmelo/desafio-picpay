@@ -55,7 +55,7 @@ class UserRestControllerTest extends BaseRestControllerTest {
 
 	@Test
 	void testSaveCompany() throws Exception {
-		UserRequestDto userCompany = new UserRequestDto(
+		UserRequestDto userDto = new UserRequestDto(
 				null, 
 				"Company Outlet", 
 				"outlet@picpay.com", 
@@ -65,23 +65,24 @@ class UserRestControllerTest extends BaseRestControllerTest {
 				UserType.COMPANY.name(), 
 				UserRole.USER.name());
 
-		MvcResult resultUserCompany = mvc.perform(MockMvcRequestBuilders
+		MvcResult result = mvc.perform(MockMvcRequestBuilders
 	            .post("/api/open/user")
 	            .servletPath("/api/open/user")
-	            .content(toJson(userCompany))
+	            .content(toJson(userDto))
 	            .contentType(MediaType.APPLICATION_JSON)
 	            )
 	            .andExpect(status().isOk())
 	            .andReturn();
-		User userCreatedCompany = (User) fromJson(
-				resultUserCompany.getResponse().getContentAsString(), 
+		User user = (User) fromJson(
+				result.getResponse().getContentAsString(), 
 				User.class);
-		assertTrue(userCreatedCompany.getId() != null);
+		assertTrue(user.getId() != null);
+		assertEquals(result.getResponse().getStatus(), HttpStatus.OK.value());
 	}
 
 	@Test
 	void testSaveCustomer() throws Exception {
-		UserRequestDto userCustomer = new UserRequestDto(
+		UserRequestDto userDto = new UserRequestDto(
 				null, 
 				"Beltrano Foo", 
 				"beltrano@picpay.com", 
@@ -91,23 +92,24 @@ class UserRestControllerTest extends BaseRestControllerTest {
 				UserType.CUSTOMER.name(), 
 				UserRole.USER.name());
 
-		MvcResult resultUserCustomer = mvc.perform(MockMvcRequestBuilders
+		MvcResult result = mvc.perform(MockMvcRequestBuilders
 	            .post("/api/open/user")
 	            .servletPath("/api/open/user")
-	            .content(toJson(userCustomer))
+	            .content(toJson(userDto))
 	            .contentType(MediaType.APPLICATION_JSON)
 	            )
 	            .andExpect(status().isOk())
 	            .andReturn();
-		User userCreatedCustomer = (User) fromJson(
-				resultUserCustomer.getResponse().getContentAsString(), 
+		User user = (User) fromJson(
+				result.getResponse().getContentAsString(), 
 				User.class);
-		assertTrue(userCreatedCustomer.getId() != null);
+		assertTrue(user.getId() != null && user.getId() > 0);
+		assertEquals(result.getResponse().getStatus(), HttpStatus.OK.value());
 	}
 
 	@Test
 	void testSaveEmailAlreadyExists() throws Exception {
-		UserRequestDto userCustomer = new UserRequestDto(
+		UserRequestDto userDto = new UserRequestDto(
 				null, 
 				"Ciclano Foo", 
 				"ciclano@picpay.com", 
@@ -117,20 +119,20 @@ class UserRestControllerTest extends BaseRestControllerTest {
 				UserType.CUSTOMER.name(), 
 				UserRole.USER.name());
 
-		MvcResult resultUserCustomer = mvc.perform(MockMvcRequestBuilders
+		MvcResult result = mvc.perform(MockMvcRequestBuilders
 	            .post("/api/open/user")
 	            .servletPath("/api/open/user")
-	            .content(toJson(userCustomer))
+	            .content(toJson(userDto))
 	            .contentType(MediaType.APPLICATION_JSON)
 	            )
 	            .andExpect(status().isBadRequest())
 	            .andReturn();
-		assertEquals(resultUserCustomer.getResponse().getStatus(), HttpStatus.BAD_REQUEST.value());
+		assertEquals(result.getResponse().getStatus(), HttpStatus.BAD_REQUEST.value());
 	}
 
 	@Test
 	void testSaveDocumentAlreadyExists() throws Exception {
-		UserRequestDto userCustomer = new UserRequestDto(
+		UserRequestDto userDto = new UserRequestDto(
 				null, 
 				"Ciclano Foo", 
 				"newcustomer@picpay.com", 
@@ -140,15 +142,15 @@ class UserRestControllerTest extends BaseRestControllerTest {
 				UserType.COMPANY.name(), 
 				UserRole.USER.name());
 
-		MvcResult resultUserCustomer = mvc.perform(MockMvcRequestBuilders
+		MvcResult result = mvc.perform(MockMvcRequestBuilders
 	            .post("/api/open/user")
 	            .servletPath("/api/open/user")
-	            .content(toJson(userCustomer))
+	            .content(toJson(userDto))
 	            .contentType(MediaType.APPLICATION_JSON)
 	            )
 	            .andExpect(status().isBadRequest())
 	            .andReturn();
-		assertEquals(resultUserCustomer.getResponse().getStatus(), HttpStatus.BAD_REQUEST.value());
+		assertEquals(result.getResponse().getStatus(), HttpStatus.BAD_REQUEST.value());
 
 //		assertThatThrownBy(
 //            () -> mvc.perform(MockMvcRequestBuilders

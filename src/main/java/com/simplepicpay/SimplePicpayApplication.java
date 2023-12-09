@@ -29,7 +29,7 @@ public class SimplePicpayApplication implements CommandLineRunner {
 				"Company Shopping", 
 				"company@picpay.com", 
 				"$2a$10$SDelfowfCRWei0rkUI5IIO1dLNKYrcHP4cjbjoJLViYj4h/0a7VdO", 
-				BigDecimal.valueOf(150), 
+				BigDecimal.valueOf(1500), 
 				"86126937000123", 
 				UserType.COMPANY.name(), 
 				UserRole.USER.name()));
@@ -38,7 +38,7 @@ public class SimplePicpayApplication implements CommandLineRunner {
 				"Fulano Foo", 
 				"fulano@picpay.com", 
 				"$2a$10$SDelfowfCRWei0rkUI5IIO1dLNKYrcHP4cjbjoJLViYj4h/0a7VdO", 
-				new BigDecimal(50),	
+				new BigDecimal(500),	
 				"65574052687", 
 				UserType.CUSTOMER.name(), 
 				UserRole.USER.name()));
@@ -47,7 +47,7 @@ public class SimplePicpayApplication implements CommandLineRunner {
 				"Ciclano Bar", 
 				"ciclano@picpay.com", 
 				"$2a$10$SDelfowfCRWei0rkUI5IIO1dLNKYrcHP4cjbjoJLViYj4h/0a7VdO", 
-				new BigDecimal(50),	
+				new BigDecimal(600),	
 				"05152342570", 
 				UserType.CUSTOMER.name(), 
 				UserRole.USER.name()));

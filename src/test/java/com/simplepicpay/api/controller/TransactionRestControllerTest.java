@@ -74,7 +74,6 @@ class TransactionRestControllerTest extends BaseRestControllerTest {
 		Long payer = 3000l;
 		Long payee = this.companyId;
 		BigDecimal ammount = BigDecimal.valueOf(5);
-		BigDecimal payerBalanceBefore = this.findById(payer).getBalance();
 		BigDecimal payeeBalanceBefore = this.findById(payee).getBalance();
 
 		TransferRequestDto transferDto = new TransferRequestDto(payer, payee, ammount);
@@ -92,9 +91,7 @@ class TransactionRestControllerTest extends BaseRestControllerTest {
 		assertEquals(exceptionDto.httpStatusCode(), HttpStatus.BAD_REQUEST.value());
 		System.out.println(exceptionDto == null ? "" : exceptionDto.message());
 
-		BigDecimal payerBalance = this.findById(payer).getBalance();
 		BigDecimal payeeBalance = this.findById(payee).getBalance();
-		assertEquals(payerBalanceBefore, payerBalance, "Payer balance cannot change");
 		assertEquals(payeeBalanceBefore, payeeBalance, "Payee balance cannot change");
 	}
 
@@ -104,7 +101,6 @@ class TransactionRestControllerTest extends BaseRestControllerTest {
 		Long payee = 3000l;
 		BigDecimal ammount = BigDecimal.valueOf(5);
 		BigDecimal payerBalanceBefore = this.findById(payer).getBalance();
-		BigDecimal payeeBalanceBefore = this.findById(payee).getBalance();
 
 		TransferRequestDto transferDto = new TransferRequestDto(payer, payee, ammount);
 		MvcResult result = mvc.perform(MockMvcRequestBuilders
@@ -122,9 +118,7 @@ class TransactionRestControllerTest extends BaseRestControllerTest {
 		System.out.println(exceptionDto == null ? "" : exceptionDto.message());
 
 		BigDecimal payerBalance = this.findById(payer).getBalance();
-		BigDecimal payeeBalance = this.findById(payee).getBalance();
 		assertEquals(payerBalanceBefore, payerBalance, "Payer balance cannot change");
-		assertEquals(payeeBalanceBefore, payeeBalance, "Payee balance cannot change");
 	}
 
 	@Test

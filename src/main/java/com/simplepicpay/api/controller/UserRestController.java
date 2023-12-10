@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,12 +16,22 @@ import com.simplepicpay.dto.UserRequestDto;
 import com.simplepicpay.exception.BusinessException;
 import com.simplepicpay.model.User;
 import com.simplepicpay.service.UserService;
+import com.simplepicpay.shared.StringUtil;
 
 @RestController
 @RequestMapping("/api")
 public class UserRestController {
 	@Autowired
 	private UserService userService;
+
+	@GetMapping("/me")
+	public User me() throws BusinessException {
+		String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        if (!StringUtil.isNullOrEmpty(email)) {
+            return this.userService.findByEmail(email);
+        }
+        return null;
+	}
 
 	@PostMapping("/open/user")
 	public ResponseEntity<User> save(@RequestBody UserRequestDto userDto) throws BusinessException {

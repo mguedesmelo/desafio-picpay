@@ -98,7 +98,7 @@ Ao iniciar a aplicação são criados 3 usuários que devem ser usados para efei
 **Erros possíveis:**
 | # | Descrição | HTTP Status Code | 
 | ------ | ------ | ------ |
-| 1 | Login inexistente ou senha inválida: retornar um erro com a mensagem “Invalid email or password” | 400 |
+| 1 | E-mail inexistente ou senha inválida: retornar um erro com a mensagem “Invalid email or password” | 400 |
 | 2 | E-mail já existente: retornar um erro com a mensagem “Email already exists” | 400 |
 | 3 | CPF/CNPJ já existente: retornar um erro com a mensagem “Document already exists” | 400 |
 | 4 | Campos inválidos: retornar um erro com a mensagem “Invalid fields” | 400 |

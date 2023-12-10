@@ -47,7 +47,7 @@ git clone https://github.com/mguedesmelo/simplepicpay.git
 
 
 ## 🧑 Usuários de Teste
-Ao iniciar a aplicação são criados 3 usuários que devem ser usados para efeito de teste:
+Ao iniciar a aplicação é criado um banco de dados em memória e 3 usuários são adicionados, que devem ser usados para efeito de teste:
 ```
 [
     {
@@ -227,9 +227,14 @@ Em resumo, a escolha de Java no backend oferece um ambiente técnico robusto e e
 
 - [x] Habilitar autenticação e validação via JWT
 - [x] Testar o tratamento de erros
-- [x] Testes unitários de autenticação
-- [x] Testes unitários do controlador de usuários
-- [x] Testes unitários do controlador de transferências
+- [x] Testes de integração de autenticação
+- [x] Testes de integração do controlador de usuários
+- [x] Testes de integração do controlador de transferências
 - [ ] Descrever APIs RESTful usando Swagger
 - [ ] Documentar padrões adotados (PSRs, design patterns, SOLID)
+- [ ] Disponibilizar aplicação Dockerizada
+- [ ] Testes unitários
+- [ ] Proposta de melhoria na arquitetura
 - [ ] Criar frontend em Angular?
+- [ ] Publicar aplicação na minha conta da digital ocean?
+- [ ] Criar script para CI/CD no repositório github?

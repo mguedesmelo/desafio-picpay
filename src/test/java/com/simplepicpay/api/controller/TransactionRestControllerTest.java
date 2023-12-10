@@ -203,4 +203,140 @@ class TransactionRestControllerTest extends BaseRestControllerTest {
 		assertEquals(payerBalanceBefore, payerBalance, "Payer balance cannot change");
 		assertEquals(payeeBalanceBefore, payeeBalance, "Payee balance cannot change");
 	}
+
+	@Test
+	void testTransferInvalidPayer() throws Exception {
+		String payer = "invalid value";
+		String payee = this.companyId.toString();
+		String ammount = BigDecimal.valueOf(5).toString();
+
+		TransferRequestDtoMock transferDto = new TransferRequestDtoMock(payer, payee, ammount);
+		MvcResult result = mvc.perform(MockMvcRequestBuilders
+				.post("/api/transfer")
+				.servletPath("/api/transfer")
+				.content(toJson(transferDto))
+				.contentType(MediaType.APPLICATION_JSON)
+				.header("Authorization", "Bearer " + this.loginResponseDto.token()))
+				.andExpect(status().isBadRequest())
+				.andReturn();
+
+		ExceptionDto exceptionDto = (ExceptionDto) fromJson(
+				result.getResponse().getContentAsString(), ExceptionDto.class);
+		assertEquals(exceptionDto.httpStatusCode(), HttpStatus.BAD_REQUEST.value());
+		System.out.println(exceptionDto == null ? "" : exceptionDto.message());
+	}
+
+	@Test
+	void testTransferInvalidPayee() throws Exception {
+		String payer = this.customerId.toString();
+		String payee = "invalid value";
+		String ammount = BigDecimal.valueOf(5).toString();
+
+		TransferRequestDtoMock transferDto = new TransferRequestDtoMock(payer, payee, ammount);
+		MvcResult result = mvc.perform(MockMvcRequestBuilders
+				.post("/api/transfer")
+				.servletPath("/api/transfer")
+				.content(toJson(transferDto))
+				.contentType(MediaType.APPLICATION_JSON)
+				.header("Authorization", "Bearer " + this.loginResponseDto.token()))
+				.andExpect(status().isBadRequest())
+				.andReturn();
+
+		ExceptionDto exceptionDto = (ExceptionDto) fromJson(
+				result.getResponse().getContentAsString(), ExceptionDto.class);
+		assertEquals(exceptionDto.httpStatusCode(), HttpStatus.BAD_REQUEST.value());
+		System.out.println(exceptionDto == null ? "" : exceptionDto.message());
+	}
+
+	@Test
+	void testTransferInvalidBalance() throws Exception {
+		String payer = this.customerId.toString();
+		String payee = this.companyId.toString();
+		String ammount = "invalid value";
+
+		TransferRequestDtoMock transferDto = new TransferRequestDtoMock(payer, payee, ammount);
+		MvcResult result = mvc.perform(MockMvcRequestBuilders
+				.post("/api/transfer")
+				.servletPath("/api/transfer")
+				.content(toJson(transferDto))
+				.contentType(MediaType.APPLICATION_JSON)
+				.header("Authorization", "Bearer " + this.loginResponseDto.token()))
+				.andExpect(status().isBadRequest())
+				.andReturn();
+
+		ExceptionDto exceptionDto = (ExceptionDto) fromJson(
+				result.getResponse().getContentAsString(), ExceptionDto.class);
+		assertEquals(exceptionDto.httpStatusCode(), HttpStatus.BAD_REQUEST.value());
+		System.out.println(exceptionDto == null ? "" : exceptionDto.message());
+	}
+
+	@Test
+	void testTransferMissingPayer() throws Exception {
+		String payer = "";
+		String payee = this.companyId.toString();
+		String ammount = BigDecimal.TEN.toString();
+
+		TransferRequestDtoMock transferDto = new TransferRequestDtoMock(payer, payee, ammount);
+		MvcResult result = mvc.perform(MockMvcRequestBuilders
+				.post("/api/transfer")
+				.servletPath("/api/transfer")
+				.content(toJson(transferDto))
+				.contentType(MediaType.APPLICATION_JSON)
+				.header("Authorization", "Bearer " + this.loginResponseDto.token()))
+				.andExpect(status().isBadRequest())
+				.andReturn();
+
+		ExceptionDto exceptionDto = (ExceptionDto) fromJson(
+				result.getResponse().getContentAsString(), ExceptionDto.class);
+		assertEquals(exceptionDto.httpStatusCode(), HttpStatus.BAD_REQUEST.value());
+		System.out.println(exceptionDto == null ? "" : exceptionDto.message());
+	}
+
+	@Test
+	void testTransferMissingPayee() throws Exception {
+		String payer = this.customerId.toString();
+		String payee = "";
+		String ammount = BigDecimal.TEN.toString();
+
+		TransferRequestDtoMock transferDto = new TransferRequestDtoMock(payer, payee, ammount);
+		MvcResult result = mvc.perform(MockMvcRequestBuilders
+				.post("/api/transfer")
+				.servletPath("/api/transfer")
+				.content(toJson(transferDto))
+				.contentType(MediaType.APPLICATION_JSON)
+				.header("Authorization", "Bearer " + this.loginResponseDto.token()))
+				.andExpect(status().isBadRequest())
+				.andReturn();
+
+		ExceptionDto exceptionDto = (ExceptionDto) fromJson(
+				result.getResponse().getContentAsString(), ExceptionDto.class);
+		assertEquals(exceptionDto.httpStatusCode(), HttpStatus.BAD_REQUEST.value());
+		System.out.println(exceptionDto == null ? "" : exceptionDto.message());
+	}
+
+	@Test
+	void testTransferMissingAmmount() throws Exception {
+		String payer = this.customerId.toString();
+		String payee = this.companyId.toString();
+		String ammount = "";
+
+		TransferRequestDtoMock transferDto = new TransferRequestDtoMock(payer, payee, ammount);
+		MvcResult result = mvc.perform(MockMvcRequestBuilders
+				.post("/api/transfer")
+				.servletPath("/api/transfer")
+				.content(toJson(transferDto))
+				.contentType(MediaType.APPLICATION_JSON)
+				.header("Authorization", "Bearer " + this.loginResponseDto.token()))
+				.andExpect(status().isBadRequest())
+				.andReturn();
+
+		ExceptionDto exceptionDto = (ExceptionDto) fromJson(
+				result.getResponse().getContentAsString(), ExceptionDto.class);
+		assertEquals(exceptionDto.httpStatusCode(), HttpStatus.BAD_REQUEST.value());
+		System.out.println(exceptionDto == null ? "" : exceptionDto.message());
+	}
+}
+
+record TransferRequestDtoMock(String payer, String payee, String ammount) {
+
 }

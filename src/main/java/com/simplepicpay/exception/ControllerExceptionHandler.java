@@ -1,7 +1,9 @@
 package com.simplepicpay.exception;
 
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -18,6 +20,26 @@ public class ControllerExceptionHandler {
 	public ResponseEntity<ExceptionDto> threatThrowable(Throwable throwable) {
 		return ResponseEntity.badRequest().body(new ExceptionDto(
 				HttpStatus.INTERNAL_SERVER_ERROR.value(), "Unexpected error"));
+	}
+
+	@ExceptionHandler(InvalidDataAccessApiUsageException.class)
+	public ResponseEntity<ExceptionDto> threatInvalidDataAccessApiUsageException(
+			InvalidDataAccessApiUsageException e) {
+		return ResponseEntity.badRequest().body(new ExceptionDto(HttpStatus.BAD_REQUEST.value(), 
+				"Missing fields"));
+	}
+
+	@ExceptionHandler(NullPointerException.class)
+	public ResponseEntity<ExceptionDto> threatNullPointerException(NullPointerException e) {
+		return ResponseEntity.badRequest().body(new ExceptionDto(HttpStatus.BAD_REQUEST.value(), 
+				"Missing fields"));
+	}
+
+	@ExceptionHandler(HttpMessageNotReadableException.class)
+	public ResponseEntity<ExceptionDto> threatHttpMessageNotReadableException(
+			HttpMessageNotReadableException e) {
+		return ResponseEntity.badRequest().body(new ExceptionDto(HttpStatus.BAD_REQUEST.value(), 
+				"Invalid fields"));
 	}
 
 	@ExceptionHandler(BusinessException.class)

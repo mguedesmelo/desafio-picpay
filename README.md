@@ -134,7 +134,7 @@ Todas estas rotas esperam que seja enviado um Bearer Token no cabeçalho da requ
 | ------ | ------ | ------ | ------ | ------ |
 | /api/me | Retorna as informações do usuário logado | GET | 1,2 | Finalizado |
 | /api/user | Listagem dos usuário cadastrados | GET | 1,2 | Finalizado |
-| /api/transfer | Realiza a transferência de um valor para outro usuário | POST | 1,2,3,4,5,6,7 | Em desenvolvimento |
+| /api/transfer | Realiza a transferência de um valor para outro usuário | POST | 1,2,3,4,5,6,7 | Finalizado |
 
 **Erros possíveis:**
 | # | Descrição | HTTP Status Code | 
@@ -226,10 +226,10 @@ Em resumo, a escolha de Java no backend oferece um ambiente técnico robusto e e
 # BACKLOG
 
 - [x] Habilitar autenticação e validação via JWT
+- [x] Testar o tratamento de erros
 - [x] Testes unitários de autenticação
-- [ ] Testes unitários do controlador de usuários
-- [ ] Testes unitários do controlador de transferências
+- [x] Testes unitários do controlador de usuários
+- [x] Testes unitários do controlador de transferências
 - [ ] Descrever APIs RESTful usando Swagger
 - [ ] Documentar padrões adotados (PSRs, design patterns, SOLID)
-- [ ] Testar o tratamento de erros
 - [ ] Criar frontend em Angular?

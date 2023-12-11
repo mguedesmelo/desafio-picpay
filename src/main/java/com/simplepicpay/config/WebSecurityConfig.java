@@ -69,7 +69,7 @@ public class WebSecurityConfig {
 //								antMatcher("/swagger-ui.html"),
 //								antMatcher("/swagger-ui/**"),
 
-								antMatcher("/api/open/login"),
+								antMatcher("/api/open/signin"),
 								antMatcher(HttpMethod.POST, "/api/open/user"), 
 
 								antMatcher("/favicon.ico"), 

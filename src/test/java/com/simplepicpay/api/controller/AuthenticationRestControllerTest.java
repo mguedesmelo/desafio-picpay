@@ -9,9 +9,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.simplepicpay.dto.LoginResponseDto;
 
@@ -39,20 +37,5 @@ class AuthenticationRestControllerTest extends BaseRestControllerTest {
 		MvcResult result = performLogin("fulano@picpay.com", "invalid", status().isBadRequest());
 
 		assertEquals(result.getResponse().getStatus(), HttpStatus.BAD_REQUEST.value());
-	}
-
-	@Test
-	void testMe() throws Exception {
-		LoginResponseDto loginResponseDto = getValidToken();
-		MvcResult result = mvc.perform(MockMvcRequestBuilders
-	            .get("/api/me")
-	            .contentType(MediaType.APPLICATION_JSON)
-	            .header("Authorization", "Bearer " + loginResponseDto.token()))
-	            .andExpect(status().isOk())
-	            .andReturn();
-		// TODO Endpoint /api/me deve retornar um objeto DTO??
-//		User userJson = (User) fromJson(result.getResponse().getContentAsString(), User.class);
-		String userJson = result.getResponse().getContentAsString();
-		assertNotNull(userJson);
 	}
 }

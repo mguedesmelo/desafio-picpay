@@ -25,12 +25,14 @@ public class UserRestController {
 	private UserService userService;
 
 	@GetMapping("/me")
-	public User me() throws BusinessException {
+	public ResponseEntity<User> me() throws BusinessException {
+		// TODO Should return a DTO??
+		User toReturn = null;
 		String email = SecurityContextHolder.getContext().getAuthentication().getName();
         if (!StringUtil.isNullOrEmpty(email)) {
-            return this.userService.findByEmail(email);
+            toReturn = this.userService.findByEmail(email);
         }
-        return null;
+		return new ResponseEntity<User>(toReturn, HttpStatus.OK);
 	}
 
 	@PostMapping("/open/user")

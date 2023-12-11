@@ -3,6 +3,7 @@ package com.simplepicpay.api.controller;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -10,6 +11,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -163,11 +165,29 @@ class UserRestControllerTest extends BaseRestControllerTest {
 	}
 
 	@Test
+	void testMe() throws Exception {
+		LoginResponseDto loginResponseDto = getValidToken();
+		MvcResult result = mvc.perform(MockMvcRequestBuilders
+	            .get("/api/me")
+	            .contentType(MediaType.APPLICATION_JSON)
+	            .header("Authorization", "Bearer " + loginResponseDto.token()))
+	            .andExpect(status().isOk())
+	            .andReturn();
+		String userJson = result.getResponse().getContentAsString();
+		assertNotNull(userJson);
+		User user = (User) fromJson(userJson, User.class);
+		assertNotNull(user);
+		assertEquals(loginResponseDto.email(), user.getEmail());
+	}
+
+	@Test
+	@Disabled("UserRestControllerTest.testSaveInvalidFields not implemented")
 	void testSaveInvalidFields() throws Exception {
 		fail("UserRestControllerTest.testSaveInvalidFields not implemented");
 	}
 
 	@Test
+	@Disabled("UserRestControllerTest.testSaveMissingFields not implemented")
 	void testSaveMissingFields() throws Exception {
 		fail("UserRestControllerTest.testSaveMissingFields not implemented");
 	}

@@ -10,7 +10,7 @@ RUN mvn dependency:go-offline
 
 # Copia o código-fonte e compile o projeto
 COPY src/ src/
-RUN mvn package -DskipTests
+RUN mvn package
 
 # Usa a imagem base do OpenJDK para executar a aplicação
 FROM openjdk:latest
@@ -19,7 +19,7 @@ FROM openjdk:latest
 WORKDIR /app
 
 # Copia o arquivo JAR do Spring Boot do estágio de compilação para o contêiner
-COPY --from=build /build/target/simplepicpay.jar /app/simplepicpay.jar
+COPY --from=build /build/target/simplepicpay-0.0.1-SNAPSHOT.jar /app/simplepicpay-0.0.1-SNAPSHOT.jar
 
 # Executa a aplicação quando o contêiner for iniciado
-CMD ["java", "-jar", "simplepicpay.jar"]
+CMD ["java", "-jar", "simplepicpay-0.0.1-SNAPSHOT.jar"]

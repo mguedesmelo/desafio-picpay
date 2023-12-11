@@ -11,10 +11,11 @@ Ambos possuem uma carteira com dinheiro e realizam transferências entre eles.
 * [Spring](https://spring.io/) - Framework Web Java
 * [Spring Boot](https://spring.io/projects/spring-boot) - Framework Initializer
 * [Hibernate](http://hibernate.org/orm/) - ORM
-* [Tomcat](http://tomcat.apache.org/) - Servlet Container
-* [Swagger](https://swagger.io/) - Gerenciador de Documentação e Testes Funcionais
+* [Tomcat](http://tomcat.apache.org/) - Servlet container
+* [Swagger](https://swagger.io/) - Gerenciador de documentação e testes funcionais
 * [H2 Database](http://www.h2database.com) - SGBD
 * [Spring Tools 4 for Eclipse](https://spring.io/tools) - IDE
+* [Postman](https://www.postman.com) - Ferramenta para testar as APIs
 
 ## ⌨️ Instalação
 1. Clone o repositório para baixar as pastas contendo o código fonte dos projeto Java.
@@ -230,11 +231,10 @@ Em resumo, a escolha de Java no backend oferece um ambiente técnico robusto e e
 - [x] Testes de integração de autenticação
 - [x] Testes de integração do controlador de usuários
 - [x] Testes de integração do controlador de transferências
+- [x] Docker
 - [ ] Descrever APIs RESTful usando Swagger
 - [ ] Documentar padrões adotados (PSRs, design patterns, SOLID)
-- [ ] Disponibilizar aplicação Dockerizada
-- [ ] Testes unitários
 - [ ] Proposta de melhoria na arquitetura
+- [ ] Criar script para CI/CD no repositório github?
 - [ ] Criar frontend em Angular?
 - [ ] Publicar aplicação na minha conta da digital ocean?
-- [ ] Criar script para CI/CD no repositório github?

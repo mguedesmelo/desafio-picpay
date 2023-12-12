@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "36bca8d1-5cdb-4fdf-ab56-344d091da302",
+		"name": "Simple PicPay",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17368117",
+		"_collection_link": "https://mguedesmelo.postman.co/workspace/My-Workspace~58177d6b-d3c3-4b39-88db-7f593497de0e/collection/17368117-36bca8d1-5cdb-4fdf-ab56-344d091da302?action=share&source=collection_link&creator=17368117"
+	},
+	"item": [
+		{
+			"name": "/api/open/signin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"fulano@picpay.com\",\r\n  \"password\": \"h3ll0\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/open/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"open",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/me",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwaWNwYXlfaXNzdWVyIiwic3ViIjoiZnVsYW5vQHBpY3BheS5jb20iLCJleHAiOjE3MDIzMDgzNTN9.RG4QjSnuZHT1CKPiSQJ3ajYrXV3OHhY2pVToiQS8IAk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwaWNwYXlfaXNzdWVyIiwic3ViIjoiZnVsYW5vQHBpY3BheS5jb20iLCJleHAiOjE3MDIzMDgzNTN9.RG4QjSnuZHT1CKPiSQJ3ajYrXV3OHhY2pVToiQS8IAk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/transfer",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJwaWNwYXlfaXNzdWVyIiwic3ViIjoiZnVsYW5vQHBpY3BheS5jb20iLCJleHAiOjE3MDIzMDgzNTN9.RG4QjSnuZHT1CKPiSQJ3ajYrXV3OHhY2pVToiQS8IAk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"payer\": \"2\",\r\n    \"payee\": \"1\",\r\n    \"ammount\": \"10\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/transfer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"transfer"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

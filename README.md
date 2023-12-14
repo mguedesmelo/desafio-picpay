@@ -237,4 +237,4 @@ Em resumo, a escolha de Java no backend oferece um ambiente técnico robusto e e
 - [ ] Proposta de melhoria na arquitetura
 - [ ] Criar script para CI/CD no repositório github?
 - [ ] Criar frontend em Angular?
-- [ ] Publicar aplicação na minha conta da digital ocean?
+- [ ] Publicar aplicação no firebase?

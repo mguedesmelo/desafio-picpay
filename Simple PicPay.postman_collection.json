@@ -23,12 +23,13 @@
 					"raw": "{\r\n  \"email\": \"fulano@picpay.com\",\r\n  \"password\": \"h3ll0\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/open/signin",
-					"protocol": "http",
+					"raw": "https://simplepicpay.onrender.com/api/open/signin",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"simplepicpay",
+						"onrender",
+						"com"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"open",
@@ -60,12 +61,13 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/api/me",
-					"protocol": "http",
+					"raw": "https://simplepicpay.onrender.com/api/me",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"simplepicpay",
+						"onrender",
+						"com"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"me"
@@ -96,12 +98,13 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/api/user",
-					"protocol": "http",
+					"raw": "https://simplepicpay.onrender.com/api/user",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"simplepicpay",
+						"onrender",
+						"com"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"user"
@@ -136,12 +139,13 @@
 					"raw": "{\r\n    \"payer\": \"2\",\r\n    \"payee\": \"1\",\r\n    \"ammount\": \"10\"\r\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/transfer",
-					"protocol": "http",
+					"raw": "https://simplepicpay.onrender.com/api/transfer",
+					"protocol": "https",
 					"host": [
-						"localhost"
+						"simplepicpay",
+						"onrender",
+						"com"
 					],
-					"port": "8080",
 					"path": [
 						"api",
 						"transfer"

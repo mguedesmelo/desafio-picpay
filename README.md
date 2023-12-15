@@ -232,9 +232,9 @@ Em resumo, a escolha de Java no backend oferece um ambiente técnico robusto e e
 - [x] Testes de integração do controlador de usuários
 - [x] Testes de integração do controlador de transferências
 - [x] Docker
+- [x] Publicar aplicação no render
+- [x] Criar script para CI/CD no repositório github
 - [ ] Descrever APIs RESTful usando Swagger
 - [ ] Documentar padrões adotados (PSRs, design patterns, SOLID)
 - [ ] Proposta de melhoria na arquitetura
-- [ ] Criar script para CI/CD no repositório github
 - [ ] Criar frontend em Angular
-- [ ] Publicar aplicação no render

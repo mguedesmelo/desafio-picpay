@@ -1,25 +1,16 @@
-# Usa a imagem base do Maven para compilar o projeto
-FROM maven:latest AS build
+FROM ubuntu:latest AS build
 
-# Diretório de trabalho dentro do contêiner
-WORKDIR /build
+RUN apt-get update
+RUN apt-get install openjdk-17-jdk -y
+COPY . .
 
-# Copia apenas o arquivo POM e faça o download das dependências
-COPY pom.xml .
-RUN mvn dependency:go-offline
+RUN apt-get install maven -y
+RUN mvn clean install 
 
-# Copia o código-fonte e compile o projeto
-COPY src/ src/
-RUN mvn package
+FROM openjdk:17-jdk-slim
 
-# Usa a imagem base do OpenJDK para executar a aplicação
-FROM openjdk:latest
+EXPOSE 8080
 
-# Diretório de trabalho dentro do contêiner
-WORKDIR /app
+COPY --from=build /target/simplepicpay-0.0.1-SNAPSHOT.jar simplepicpay.jar
 
-# Copia o arquivo JAR do Spring Boot do estágio de compilação para o contêiner
-COPY --from=build /build/target/simplepicpay-0.0.1-SNAPSHOT.jar /app/simplepicpay-0.0.1-SNAPSHOT.jar
-
-# Executa a aplicação quando o contêiner for iniciado
-CMD ["java", "-jar", "simplepicpay-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT [ "java", "-jar", "simplepicpay.jar" ]

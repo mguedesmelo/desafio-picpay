@@ -235,6 +235,6 @@ Em resumo, a escolha de Java no backend oferece um ambiente técnico robusto e e
 - [ ] Descrever APIs RESTful usando Swagger
 - [ ] Documentar padrões adotados (PSRs, design patterns, SOLID)
 - [ ] Proposta de melhoria na arquitetura
-- [ ] Criar script para CI/CD no repositório github?
-- [ ] Criar frontend em Angular?
-- [ ] Publicar aplicação no firebase?
+- [ ] Criar script para CI/CD no repositório github
+- [ ] Criar frontend em Angular
+- [ ] Publicar aplicação no render
